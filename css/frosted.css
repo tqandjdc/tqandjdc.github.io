@@ -8,11 +8,11 @@ html, body {
 
 /* --- 顶部导航栏 --- */
 #nav {
-  background: rgba(255, 255, 255, 0.75) !important;
-  backdrop-filter: saturate(180%) blur(12px);
-  -webkit-backdrop-filter: saturate(180%) blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.08);
 }
 
 #nav a {
@@ -31,11 +31,26 @@ html, body {
 /* --- 顶栏全屏 banner 覆盖 --- */
 #page-header {
   background: transparent !important;
+  height: 45vh !important;
+  min-height: 260px !important;
 }
 
-#page-header #post-info,
+/* banner 标题玻璃拟态 */
 #page-header #site-info {
-  display: none !important;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 8px 20px !important;
+  display: inline-block;
+  margin: 0 auto;
+}
+#page-header #site-title {
+  color: #333 !important;
+  text-shadow: none !important;
+}
+#page-header #site-subtitle {
+  color: #666 !important;
 }
 
 /* --- 主体卡片 - 玻璃拟态 --- */
