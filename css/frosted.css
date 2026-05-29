@@ -1,0 +1,54 @@
+/* 磨砂玻璃效果 */
+#body-wrap {
+  background: rgba(255, 255, 255, 0.65) !important;
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+#page {
+  background: transparent !important;
+}
+
+.layout {
+  background: transparent !important;
+}
+
+#aside-content .card-widget {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: saturate(180%) blur(15px);
+  -webkit-backdrop-filter: saturate(180%) blur(15px);
+}
+
+#recent-posts > .recent-post-item {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: saturate(180%) blur(15px);
+  -webkit-backdrop-filter: saturate(180%) blur(15px);
+}
+
+/* 暗色模式适配 */
+[data-theme="dark"] #body-wrap {
+  background: rgba(0, 0, 0, 0.65) !important;
+}
+
+[data-theme="dark"] #aside-content .card-widget,
+[data-theme="dark"] #recent-posts > .recent-post-item {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 文章页面也应用磨砂效果 */
+#post {
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: saturate(180%) blur(15px);
+  -webkit-backdrop-filter: saturate(180%) blur(15px);
+  border-radius: 12px;
+  padding:  20px;
+}
+
+[data-theme="dark"] #post {
+  background: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* 页脚透明 */
+#footer {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
