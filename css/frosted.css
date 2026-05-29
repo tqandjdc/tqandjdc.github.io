@@ -130,9 +130,19 @@ html, body {
 
 /* --- 代码块 --- */
 figure.highlight, pre {
-  background: rgba(0, 0, 0, 0.05) !important;
+  background: rgba(0, 0, 0, 0.08) !important;
   border-radius: 10px !important;
-  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+figure.highlight .line,
+figure.highlight code,
+figure.highlight td.code,
+pre, pre code {
+  color: #222 !important;
+}
+figure.highlight .comment,
+figure.highlight .meta {
+  color: #666 !important;
 }
 
 /* --- 滚动条 --- */
