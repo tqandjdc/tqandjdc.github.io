@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>iOS 越狱设备电子取证完全指南 | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="iOS 瓒婄嫳璁惧鐢靛瓙鍙栬瘉瀹屽叏鎸囧崡涓€銆佹杩?鏈枃妗ｉ潰鍚戠數瀛愭暟鎹彇璇佷汉鍛橈紝璇︾粏瑙ｆ瀽宸茶秺鐙憋紙Jailbroken锛塱OS 璁惧鐨勬枃浠剁郴缁熺粨鏋勩€傝秺鐙卞悗璁惧鎷ユ湁瀹屾暣鐨?root 鏉冮檺锛屽彲璁块棶鍘熸湰鍙楅檺鐨勭郴缁熺洰褰曪紝杩欎负鍙栬瘉鎻愪緵浜嗗ぇ閲忓湪浼犵粺闈炶秺鐙辫澶囦笂鏃犳硶鑾峰彇鐨勬暟鎹€?浜屻€乮OS 鏂囦欢绯荤粺鏍圭洰褰曞叏瑙?iO">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>iOS 越狱设备电子取证完全指南 | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="iOS 越狱设备电子取证完全指南一、概述本文档面向电子数据取证人员，详细解析已越狱（Jailbroken）iOS 设备的文件系统结构。越狱后设备拥有完整的 root 权限，可访问原本受限的系统目录，这为取证提供了大量在传统非越狱设备上无法获取的数据。  二、iOS 文件系统根目录全解iOS 基于 Darwin（Unix 内核），其文件系统结构沿袭了 Unix 的传统。以下按截图中的目录逐一说明，包">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 越狱设备电子取证完全指南">
 <meta property="og:url" content="http://example.com/2026/05/29/ios%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="iOS 瓒婄嫳璁惧鐢靛瓙鍙栬瘉瀹屽叏鎸囧崡涓€銆佹杩?鏈枃妗ｉ潰鍚戠數瀛愭暟鎹彇璇佷汉鍛橈紝璇︾粏瑙ｆ瀽宸茶秺鐙憋紙Jailbroken锛塱OS 璁惧鐨勬枃浠剁郴缁熺粨鏋勩€傝秺鐙卞悗璁惧鎷ユ湁瀹屾暣鐨?root 鏉冮檺锛屽彲璁块棶鍘熸湰鍙楅檺鐨勭郴缁熺洰褰曪紝杩欎负鍙栬瘉鎻愪緵浜嗗ぇ閲忓湪浼犵粺闈炶秺鐙辫澶囦笂鏃犳硶鑾峰彇鐨勬暟鎹€?浜屻€乮OS 鏂囦欢绯荤粺鏍圭洰褰曞叏瑙?iO">
+<meta property="og:description" content="iOS 越狱设备电子取证完全指南一、概述本文档面向电子数据取证人员，详细解析已越狱（Jailbroken）iOS 设备的文件系统结构。越狱后设备拥有完整的 root 权限，可访问原本受限的系统目录，这为取证提供了大量在传统非越狱设备上无法获取的数据。  二、iOS 文件系统根目录全解iOS 基于 Darwin（Unix 内核），其文件系统结构沿袭了 Unix 的传统。以下按截图中的目录逐一说明，包">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/hi.jpg">
 <meta property="article:published_time" content="2026-05-28T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-05-29T04:21:30.265Z">
+<meta property="article:modified_time" content="2026-05-29T04:25:13.471Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="iOS">
 <meta property="article:tag" content="文件系统">
@@ -21,7 +21,7 @@
   "url": "http://example.com/2026/05/29/ios%E7%9F%A5%E8%AF%86%E7%82%B9/",
   "image": "http://example.com/images/hi.jpg",
   "datePublished": "2026-05-28T16:00:00.000Z",
-  "dateModified": "2026-05-29T04:21:30.265Z",
+  "dateModified": "2026-05-29T04:25:13.471Z",
   "author": [
     {
       "@type": "Person",
@@ -162,172 +162,229 @@
   isHighlightShrink: false,
   isToc: true,
   pageType: 'post'
-}</script><link rel="stylesheet" href="/css/universe.css"><meta name="generator" content="Hexo 8.1.1"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/images/hi.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hexo</span></a><a class="nav-page-title" href="/"><span class="site-name">iOS 越狱设备电子取证完全指南</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">iOS 越狱设备电子取证完全指南</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-05-28T16:00:00.000Z" title="Created 2026-05-29 00:00:00">2026-05-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-05-29T04:21:30.265Z" title="Updated 2026-05-29 12:21:30">2026-05-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="iOS-瓒婄嫳璁惧鐢靛瓙鍙栬瘉瀹屽叏鎸囧崡"><a href="#iOS-瓒婄嫳璁惧鐢靛瓙鍙栬瘉瀹屽叏鎸囧崡" class="headerlink" title="iOS 瓒婄嫳璁惧鐢靛瓙鍙栬瘉瀹屽叏鎸囧崡"></a>iOS 瓒婄嫳璁惧鐢靛瓙鍙栬瘉瀹屽叏鎸囧崡</h1><h2 id="涓€銆佹杩"><a href="#涓€銆佹杩" class="headerlink" title="涓€銆佹杩?"></a>涓€銆佹杩?</h2><h2 id="鏈枃妗i潰鍚戠數瀛愭暟鎹彇璇佷汉鍛橈紝璇︾粏瑙f瀽宸茶秺鐙憋紙Jailbroken锛塱OS-璁惧鐨勬枃浠剁郴缁熺粨鏋勩€傝秺鐙卞悗璁惧鎷ユ湁瀹屾暣鐨-root-鏉冮檺锛屽彲璁块棶鍘熸湰鍙楅檺鐨勭郴缁熺洰褰曪紝杩欎负鍙栬瘉鎻愪緵浜嗗ぇ閲忓湪浼犵粺闈炶秺鐙辫澶囦笂鏃犳硶鑾峰彇鐨勬暟鎹€"><a href="#鏈枃妗i潰鍚戠數瀛愭暟鎹彇璇佷汉鍛橈紝璇︾粏瑙f瀽宸茶秺鐙憋紙Jailbroken锛塱OS-璁惧鐨勬枃浠剁郴缁熺粨鏋勩€傝秺鐙卞悗璁惧鎷ユ湁瀹屾暣鐨-root-鏉冮檺锛屽彲璁块棶鍘熸湰鍙楅檺鐨勭郴缁熺洰褰曪紝杩欎负鍙栬瘉鎻愪緵浜嗗ぇ閲忓湪浼犵粺闈炶秺鐙辫澶囦笂鏃犳硶鑾峰彇鐨勬暟鎹€" class="headerlink" title="鏈枃妗ｉ潰鍚戠數瀛愭暟鎹彇璇佷汉鍛橈紝璇︾粏瑙ｆ瀽宸茶秺鐙憋紙Jailbroken锛塱OS 璁惧鐨勬枃浠剁郴缁熺粨鏋勩€傝秺鐙卞悗璁惧鎷ユ湁瀹屾暣鐨?root 鏉冮檺锛屽彲璁块棶鍘熸湰鍙楅檺鐨勭郴缁熺洰褰曪紝杩欎负鍙栬瘉鎻愪緵浜嗗ぇ閲忓湪浼犵粺闈炶秺鐙辫澶囦笂鏃犳硶鑾峰彇鐨勬暟鎹€?"></a>鏈枃妗ｉ潰鍚戠數瀛愭暟鎹彇璇佷汉鍛橈紝璇︾粏瑙ｆ瀽宸茶秺鐙憋紙Jailbroken锛塱OS 璁惧鐨勬枃浠剁郴缁熺粨鏋勩€傝秺鐙卞悗璁惧鎷ユ湁瀹屾暣鐨?root 鏉冮檺锛屽彲璁块棶鍘熸湰鍙楅檺鐨勭郴缁熺洰褰曪紝杩欎负鍙栬瘉鎻愪緵浜嗗ぇ閲忓湪浼犵粺闈炶秺鐙辫澶囦笂鏃犳硶鑾峰彇鐨勬暟鎹€?</h2><h2 id="浜屻€乮OS-鏂囦欢绯荤粺鏍圭洰褰曞叏瑙"><a href="#浜屻€乮OS-鏂囦欢绯荤粺鏍圭洰褰曞叏瑙" class="headerlink" title="浜屻€乮OS 鏂囦欢绯荤粺鏍圭洰褰曞叏瑙?"></a>浜屻€乮OS 鏂囦欢绯荤粺鏍圭洰褰曞叏瑙?</h2><p>iOS 鍩轰簬 Darwin锛圲nix 鍐呮牳锛夛紝鍏舵枃浠剁郴缁熺粨鏋勬部琚簡 Unix 鐨勪紶缁熴€備互涓嬫寜鎴浘涓殑鐩綍閫愪竴璇存槑锛屽寘鍚?*鏍圭洰褰曞眰**鍜?*鍚勭洰褰曠殑鏍稿績瀛愮洰褰?*銆?</p>
-<h3 id="2-1-鏍圭洰褰曞悇鏂囦欢澶逛綔鐢ㄦ€昏"><a href="#2-1-鏍圭洰褰曞悇鏂囦欢澶逛綔鐢ㄦ€昏" class="headerlink" title="2.1 鏍圭洰褰曞悇鏂囦欢澶逛綔鐢ㄦ€昏"></a>2.1 鏍圭洰褰曞悇鏂囦欢澶逛綔鐢ㄦ€昏</h3><table>
+}</script><link rel="stylesheet" href="/css/universe.css"><meta name="generator" content="Hexo 8.1.1"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/images/hi.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hexo</span></a><a class="nav-page-title" href="/"><span class="site-name">iOS 越狱设备电子取证完全指南</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">iOS 越狱设备电子取证完全指南</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-05-28T16:00:00.000Z" title="Created 2026-05-29 00:00:00">2026-05-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-05-29T04:25:13.471Z" title="Updated 2026-05-29 12:25:13">2026-05-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="iOS-越狱设备电子取证完全指南"><a href="#iOS-越狱设备电子取证完全指南" class="headerlink" title="iOS 越狱设备电子取证完全指南"></a>iOS 越狱设备电子取证完全指南</h1><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><p>本文档面向电子数据取证人员，详细解析已越狱（Jailbroken）iOS 设备的文件系统结构。越狱后设备拥有完整的 root 权限，可访问原本受限的系统目录，这为取证提供了大量在传统非越狱设备上无法获取的数据。</p>
+<hr>
+<h2 id="二、iOS-文件系统根目录全解"><a href="#二、iOS-文件系统根目录全解" class="headerlink" title="二、iOS 文件系统根目录全解"></a>二、iOS 文件系统根目录全解</h2><p>iOS 基于 Darwin（Unix 内核），其文件系统结构沿袭了 Unix 的传统。以下按截图中的目录逐一说明，包含<strong>根目录层</strong>和<strong>各目录的核心子目录</strong>。</p>
+<h3 id="2-1-根目录各文件夹作用总览"><a href="#2-1-根目录各文件夹作用总览" class="headerlink" title="2.1 根目录各文件夹作用总览"></a>2.1 根目录各文件夹作用总览</h3><table>
 <thead>
 <tr>
-<th>鏍圭洰褰曟枃浠跺す</th>
-<th>鏍稿績浣滅敤</th>
-<th>鍙栬瘉浠峰€?</th>
+<th>根目录文件夹</th>
+<th>核心作用</th>
+<th>取证价值</th>
 </tr>
 </thead>
 <tbody><tr>
 <td><code>.fseventsd</code></td>
-<td>macOS 鏂囦欢绯荤粺浜嬩欢鏃ュ織</td>
-<td>鈽呪槄 浠?macOS 浜х敓锛宨OS 瓒婄嫳鏃跺彲鑳藉嚭鐜?</td>
+<td>macOS 文件系统事件日志</td>
+<td>★★ 仅 macOS 产生，iOS 越狱时可能出现</td>
 </tr>
 <tr>
 <td><code>.Trashes</code></td>
-<td>鍥炴敹绔欙紙绫讳技搴熺焊绡擄級</td>
-<td>鈽呪槄 鍙兘鏈夊凡鍒犻櫎鏂囦欢鎭㈠</td>
+<td>回收站（类似废纸篓）</td>
+<td>★★ 可能有已删除文件恢复</td>
 </tr>
 <tr>
 <td><code>Applications</code></td>
-<td>瓒婄嫳鐩存帴瀹夎鐨勯潪 App Store 搴旂敤</td>
-<td>鈽呪槄鈽?鏌ョ湅瀹夎浜嗗摢浜涜秺鐙?App</td>
+<td>越狱直接安装的非 App Store 应用</td>
+<td>★★★ 查看安装了哪些越狱 App</td>
 </tr>
 <tr>
 <td><code>bin</code></td>
-<td>鍩虹绯荤粺鍛戒护锛坙s, cat, cp 绛夛級</td>
-<td>鈽呪槄 鐗堟湰纭</td>
+<td>基础系统命令（ls, cat, cp 等）</td>
+<td>★★ 版本确认</td>
 </tr>
 <tr>
 <td><code>boot</code></td>
-<td>鍚姩鏂囦欢</td>
-<td>鈽?涓€鑸棤鍙栬瘉浠峰€?</td>
+<td>启动文件</td>
+<td>★ 一般无取证价值</td>
 </tr>
 <tr>
 <td><code>cores</code></td>
-<td>鍐呮牳宕╂簝杞偍鏂囦欢</td>
-<td>鈽呪槄 搴旂敤宕╂簝鍒嗘瀽</td>
+<td>内核崩溃转储文件</td>
+<td>★★ 应用崩溃分析</td>
 </tr>
 <tr>
 <td><code>dev</code></td>
-<td>璁惧鑺傜偣</td>
-<td>鈽?绯荤粺璋冭瘯鐢?</td>
+<td>设备节点</td>
+<td>★ 系统调试用</td>
 </tr>
 <tr>
 <td><code>Developer</code></td>
-<td>Xcode 鐩稿叧寮€鍙戣€呭伐鍏?</td>
-<td>鈽?瓒婄嫳璁惧鍙兘鏈?</td>
+<td>Xcode 相关开发者工具</td>
+<td>★ 越狱设备可能有</td>
 </tr>
 <tr>
 <td><code>lib</code></td>
-<td>绯荤粺鍏变韩搴?</td>
-<td>鈽?涓€鑸棤鍙栬瘉浠峰€?</td>
+<td>系统共享库</td>
+<td>★ 一般无取证价值</td>
 </tr>
 <tr>
 <td><code>Library</code></td>
-<td>**绯荤粺绾?*璧勬簮涓庨厤缃?</td>
-<td>鈽呪槄鈽?绯荤粺鍋忓ソ銆侀煶棰戠瓑</td>
+<td><strong>系统级</strong>资源与配置</td>
+<td>★★★ 系统偏好、音频等</td>
 </tr>
 <tr>
 <td><code>mnt</code></td>
-<td>鎸傝浇鐐癸紙U 鐩樼瓑澶栭儴瀛樺偍锛?</td>
-<td>鈽呪槄鈽?鍙兘鏈夊鎺ヨ澶囨暟鎹?</td>
+<td>挂载点（U 盘等外部存储）</td>
+<td>★★★ 可能有外接设备数据</td>
 </tr>
 <tr>
 <td><code>private</code></td>
-<td>绉佹湁绯荤粺鐩綍锛堟牳蹇冿紒锛?</td>
-<td>鈽呪槄鈽呪槄鈽?鎵€鏈夎繍琛屾椂鏁版嵁鍦ㄦ</td>
+<td>私有系统目录（核心！）</td>
+<td>★★★★★ 所有运行时数据在此</td>
 </tr>
 <tr>
 <td><code>sbin</code></td>
-<td>瓒呯骇鐢ㄦ埛绯荤粺鍛戒护</td>
-<td>鈽?涓€鑸棤鍙栬瘉浠峰€?</td>
+<td>超级用户系统命令</td>
+<td>★ 一般无取证价值</td>
 </tr>
 <tr>
 <td><code>System</code></td>
-<td>iOS 绯荤粺鏍稿績鏂囦欢</td>
-<td>鈽?鐗堟湰纭</td>
+<td>iOS 系统核心文件</td>
+<td>★ 版本确认</td>
 </tr>
 <tr>
 <td><code>usr</code></td>
-<td>鐢ㄦ埛宸ュ叿涓庡簱</td>
-<td>鈽?涓€鑸棤鍙栬瘉浠峰€?</td>
+<td>用户工具与库</td>
+<td>★ 一般无取证价值</td>
 </tr>
 <tr>
 <td><code>.cydia_no_stash</code></td>
-<td>Cydia 瓒婄嫳鏍囪鏂囦欢</td>
-<td>鈽呪槄鈽呪槄 璇佹槑璁惧宸茶秺鐙?</td>
+<td>Cydia 越狱标记文件</td>
+<td>★★★★ 证明设备已越狱</td>
 </tr>
 <tr>
 <td><code>.file</code></td>
-<td>鏂囦欢绫诲瀷绱㈠紩</td>
-<td>鈽?涓€鑸棤鍙栬瘉浠峰€?</td>
+<td>文件类型索引</td>
+<td>★ 一般无取证价值</td>
 </tr>
 <tr>
 <td><code>.installed_home depot</code></td>
-<td>Cydia 鎻掍欢瀹夎鏍囪</td>
-<td>鈽呪槄鈽呪槄 璇佹槑璁惧宸茶秺鐙?</td>
+<td>Cydia 插件安装标记</td>
+<td>★★★★ 证明设备已越狱</td>
 </tr>
 <tr>
 <td><code>etc</code></td>
-<td>绯荤粺閰嶇疆鏂囦欢</td>
-<td>鈽呪槄鈽?SSH 閰嶇疆銆乭osts 绛?</td>
+<td>系统配置文件</td>
+<td>★★★ SSH 配置、hosts 等</td>
 </tr>
 <tr>
 <td><code>tmp</code></td>
-<td>涓存椂鏂囦欢</td>
-<td>鈽?閫氬父鏃犱繚鐣欎环鍊?</td>
+<td>临时文件</td>
+<td>★ 通常无保留价值</td>
 </tr>
 <tr>
 <td><code>User</code></td>
-<td>鐢ㄦ埛鐩綍</td>
-<td>鈽呪槄鈽?鍙兘鏈夌敤鎴锋暟鎹?</td>
+<td>用户目录</td>
+<td>★★★ 可能有用户数据</td>
 </tr>
 <tr>
 <td><code>var</code></td>
-<td>鍙橀噺鏁版嵁锛堜笌 <code>/private/var/</code> 鐨勫叧绯昏涓嬫枃锛?</td>
-<td>鈽呪槄鈽呪槄鈽?鏍稿績鏁版嵁鍖哄煙</td>
+<td>变量数据（与 <code>/private/var/</code> 的关系见下文）</td>
+<td>★★★★★ 核心数据区域</td>
 </tr>
 </tbody></table>
-<h3 id="2-2-涓轰粈涔-var-鍜-etc-鏃㈠湪鏍圭洰褰曞嚭鐜板張鍦-private-涓嬶紵"><a href="#2-2-涓轰粈涔-var-鍜-etc-鏃㈠湪鏍圭洰褰曞嚭鐜板張鍦-private-涓嬶紵" class="headerlink" title="2.2 涓轰粈涔?var 鍜?etc 鏃㈠湪鏍圭洰褰曞嚭鐜板張鍦?private 涓嬶紵"></a>2.2 涓轰粈涔?<code>var</code> 鍜?<code>etc</code> 鏃㈠湪鏍圭洰褰曞嚭鐜板張鍦?<code>private</code> 涓嬶紵</h3><p>杩欐槸鐞嗚В iOS 鏂囦欢绯荤粺鐨勫叧閿偣锛?</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/  (鏍圭洰褰?</span><br><span class="line">鈹溾攢鈹€ private/          鈫?private 鏂囦欢澶?鈹?  鈹溾攢鈹€ var/          鈫?鐪熸鐨勮繍琛屾椂鏁版嵁鍦ㄦ锛屽惈鎵€鏈夌敤鎴锋暟鎹?鈹?  鈹?  鈹溾攢鈹€ mobile/   鈫?鐢ㄦ埛鏁版嵁锛堣亰澶╄褰曘€佺収鐗囩瓑锛?鈹?  鈹?  鈹溾攢鈹€ root/     鈫?root 鐢ㄦ埛鏁版嵁</span><br><span class="line">鈹?  鈹?  鈹溾攢鈹€ db/       鈫?绯荤粺鏁版嵁搴?鈹?  鈹?  鈹斺攢鈹€ log/      鈫?绯荤粺鏃ュ織</span><br><span class="line">鈹?  鈹斺攢鈹€ etc/          鈫?绯荤粺閰嶇疆鏂囦欢锛圫SH 閰嶇疆銆乭osts 绛夛級</span><br><span class="line">鈹溾攢鈹€ var/              鈫?鏍圭洰褰曠殑 var锛堢鍙烽摼鎺ユ垨蹇嵎寮曠敤锛?鈹斺攢鈹€ etc/              鈫?鏍圭洰褰曠殑 etc锛堢鍙烽摼鎺ユ垨蹇嵎寮曠敤锛?```</span><br><span class="line"></span><br><span class="line">**鏍圭洰褰曠殑 `/var` 鍜?`/private/var`銆乣/etc` 鍜?`/private/etc` 鏈川涓婃槸鍚屼竴涓綅缃€?* iOS 浣跨敤绗﹀彿閾炬帴锛坰ymbolic link锛夎 `/var` 鎸囧悜 `/private/var`锛宍/etc` 鎸囧悜 `/private/etc`銆傝繖鏄?Unix 绯荤粺鐨勫父瑙佸仛娉曘€?</span><br><span class="line">**鍙栬瘉鏃朵綘搴旇璧扮殑璺緞鏄?`/private/var/`**锛屽洜涓鸿繖鏄畬鏁磋矾寰勶紝涓嶄細娣锋穯銆?</span><br><span class="line">### 2.3 `/private/` 鐩綍璇﹁В</span><br><span class="line"></span><br><span class="line">`/private/` 鏄?iOS 鐨?绉佹湁绯荤粺鐩綍&quot;锛屽瓨鏀剧郴缁熻繍琛屾椂浜х敓鐨勬墍鏈夋暟鎹紝鏄彇璇佺殑鏍稿績鍖哄煙锛?</span><br></pre></td></tr></table></figure>
-<p>&#x2F;private&#x2F;<br>鈹溾攢鈹€ var&#x2F;              鈫?鏈€鍏抽敭锛?9% 鐨勫彇璇佹暟鎹湪杩欓噷<br>鈹溾攢鈹€ etc&#x2F;              鈫?绯荤粺閰嶇疆鏂囦欢<br>鈹溾攢鈹€ var&#x2F;run&#x2F;          鈫?杩愯鏃剁姸鎬佹枃浠?鈹溾攢鈹€ var&#x2F;run&#x2F;utmp      鈫?鐧诲綍鐢ㄦ埛璁板綍<br>鈹溾攢鈹€ var&#x2F;db&#x2F;           鈫?绯荤粺鏁版嵁搴?鈹溾攢鈹€ var&#x2F;mobilebackup&#x2F; 鈫?澶囦唤鏁版嵁<br>鈹溾攢鈹€ var&#x2F;root&#x2F;         鈫?root 鐢ㄦ埛鏁版嵁<br>鈹斺攢鈹€ …</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 2.4 `/Library/`锛堢郴缁熺骇 Library锛夎瑙?</span><br><span class="line">杩欐槸**绯荤粺绾у埆鐨?Library**锛屼笌 `/var/mobile/Library/`锛堢敤鎴风骇鍒殑 Library锛変笉鍚岋細</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>&#x2F;Library&#x2F;<br>鈹溾攢鈹€ Preferences&#x2F;          鈫?绯荤粺绾у亸濂借缃?鈹?  鈹溾攢鈹€ .GlobalPreferences.plist  鈫?绯荤粺鍏ㄥ眬璁剧疆锛堣瑷€銆佹椂鍖恒€侀敭鐩樼瓑锛?鈹?  鈹斺攢鈹€ …<br>鈹溾攢鈹€ Audio&#x2F;                鈫?绯荤粺闊抽锛堥搩澹般€侀€氱煡闊筹級<br>鈹溾攢鈹€ Documents&#x2F;            鈫?绯荤粺鏂囨。<br>鈹溾攢鈹€ Application Support&#x2F;  鈫?绯荤粺搴旂敤鐨勬敮鎸佹枃浠?鈹溾攢鈹€ MobileAsset&#x2F;          鈫?绯荤粺璧勪骇锛堥敭鐩樸€佽闊宠瘑鍒瓑锛?鈹溾攢鈹€ Keyboard&#x2F;             鈫?閿洏鏁版嵁<br>鈹溾攢鈹€ Accessibility&#x2F;        鈫?杈呭姪鍔熻兘璁剧疆<br>鈹溾攢鈹€ Location&#x2F;             鈫?瀹氫綅鏈嶅姟<br>鈹溾攢鈹€ Timezones&#x2F;            鈫?鏃跺尯閰嶇疆<br>鈹斺攢鈹€ …</p>
-<p>&#x2F;Library&#x2F;MobileSubstrate&#x2F;  鈫?瓒婄嫳鏍稿績妗嗘灦<br>鈹溾攢鈹€ DynamicLibraries&#x2F;     鈫?Tweak 鎻掍欢鐨勫姩鎬佸簱<br>鈹溾攢鈹€ MobileSubstrate.dylib 鈫?MobileSubstrate 涓绘枃浠?鈹斺攢鈹€ Bootstrap&#x2F;            鈫?鎻掍欢鍚姩閰嶇疆</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**鍙栬瘉浠峰€硷細** `MobileSubstrate` 鐩綍鏄垽瀹氳秺鐙辩殑閾佽瘉锛屼篃鏄煡鐪嬪畨瑁呬簡鍝簺瓒婄嫳鎻掍欢鐨勫叧閿€?</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">## 涓夈€佸悇鏍稿績鐩綍鐨勫瓙鏂囦欢澶硅瑙?</span><br><span class="line">### 3.1 `/var/mobile/` 鈥?鐢ㄦ埛涓荤洰褰曪紙鍙栬瘉鏍稿績锛侊級</span><br><span class="line"></span><br><span class="line">杩欐槸鏅€氱敤鎴凤紙mobile 鐢ㄦ埛锛夌殑鏁版嵁瀛樻斁澶勶紝鍖呭惈鑱婂ぉ璁板綍銆佺収鐗囥€佽仈绯讳汉绛夊嚑涔庢墍鏈夌敤鎴锋暟鎹細</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>&#x2F;var&#x2F;mobile&#x2F;<br>鈹溾攢鈹€ Library&#x2F;              鈫?鈽呪槄鈽呪槄鈽?鐢ㄦ埛绾?Library锛屽彇璇佹渶鏍稿績鍖哄煙锛堣 3.2锛?鈹溾攢鈹€ Media&#x2F;                鈫?鈽呪槄鈽呪槄鈽?澶氬獟浣撴暟鎹紙鐓х墖銆佽棰戯級<br>鈹溾攢鈹€ Containers&#x2F;           鈫?鈽呪槄鈽呪槄鈽?App 娌欑洅鏁版嵁<br>鈹溾攢鈹€ Documents&#x2F;            鈫?鈽呪槄鈽呪槄鈽?鐢ㄦ埛鏂囨。<br>鈹溾攢鈹€ Downloads&#x2F;            鈫?鈽呪槄鈽呪槅鈽?涓嬭浇鐨勬枃浠?鈹溾攢鈹€ Movies&#x2F;               鈽呪槄鈽呪槅鈽?鐢靛奖鏂囦欢<br>鈹溾攢鈹€ Music&#x2F;                鈽呪槄鈽呪槅鈽?闊充箰鏂囦欢<br>鈹溾攢鈹€ PhotoData&#x2F;            鈽呪槄鈽呪槅鈽?鐓х墖鏁版嵁搴撳拰鍏冩暟鎹?鈹溾攢鈹€ SMS&#x2F;                  鈽呪槄鈽呪槄鈽?鐭俊鏁版嵁搴擄紙鏃х増鏈?iOS锛?鈹溾攢鈹€ Documents&#x2F;<br>鈹斺攢鈹€ …</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 瀛愮洰褰曡鏄庯細</span><br><span class="line"></span><br><span class="line">| 瀛愮洰褰?| 鍐呭 | 鍙栬瘉浠峰€?|</span><br><span class="line">|--------|------|---------|</span><br><span class="line">| `Library/` | 鐢ㄦ埛鍋忓ソ銆丼afari 鍘嗗彶銆侀€氳褰曠瓑 | 鈽呪槄鈽呪槄鈽?鏈€楂?|</span><br><span class="line">| `Media/` | 鐓х墖銆佽棰戙€侀煶涔?| 鈽呪槄鈽呪槄鈽?鏈€楂?|</span><br><span class="line">| `Containers/` | App 娌欑洅闅旂鐩綍 | 鈽呪槄鈽呪槄鈽?楂?|</span><br><span class="line">| `Documents/` | 鐢ㄦ埛鏂囨。 | 鈽呪槄鈽呪槄鈽?楂?|</span><br><span class="line">| `Downloads/` | 涓嬭浇鏂囦欢 | 鈽呪槄鈽呪槅鈽?涓?|</span><br><span class="line">| `PhotoData/` | 鐓х墖鏁版嵁搴撳拰缂╃暐鍥?| 鈽呪槄鈽呪槄鈽?楂?|</span><br><span class="line"></span><br><span class="line">### 3.2 `/var/mobile/Library/` 鈥?鐢ㄦ埛 Library锛堝彇璇佹渶鏍稿績锛侊級</span><br><span class="line"></span><br><span class="line">杩欐槸鏁翠釜 iOS 鏂囦欢绯荤粺涓?*鏈€鏈夊彇璇佷环鍊肩殑鐩綍**锛?</span><br></pre></td></tr></table></figure>
-<p>&#x2F;var&#x2F;mobile&#x2F;Library&#x2F;<br>鈹溾攢鈹€ SMS&#x2F;                    鈽呪槄鈽呪槄鈽?鐭俊&#x2F;iMessage 鏁版嵁搴?鈹?  鈹溾攢鈹€ sms.db              SQLite 鏁版嵁搴擄紝鎵€鏈夌煭淇¤褰?鈹?  鈹溾攢鈹€ imessage.db         iMessage 璁板綍<br>鈹?  鈹斺攢鈹€ …<br>鈹?鈹溾攢鈹€ Safari&#x2F;                 鈽呪槄鈽呪槄鈽?Safari 娴忚鍣ㄥ巻鍙?鈹?  鈹溾攢鈹€ History.db          娴忚鍣ㄥ巻鍙茶褰?鈹?  鈹溾攢鈹€ Bookmarks.plist     涔︾<br>鈹?  鈹溾攢鈹€ WebpageImages&#x2F;      缃戦〉鎴浘缂╃暐鍥?鈹?  鈹斺攢鈹€ …<br>鈹?鈹溾攢鈹€ AddressBook&#x2F;            鈽呪槄鈽呪槄鈽?閫氳褰?鈹?  鈹溾攢鈹€ AddressBook.sqlitedb 閫氳褰曟暟鎹簱<br>鈹?  鈹溾攢鈹€ AddressBook-images.db 鑱旂郴浜哄ご鍍?鈹?  鈹斺攢鈹€ …<br>鈹?鈹溾攢鈹€ Calendar&#x2F;               鈽呪槄鈽呪槄鈽?鏃ュ巻<br>鈹?  鈹溾攢鈹€ Calendar.sqlitedb   鏃ュ巻浜嬩欢鏁版嵁搴?鈹?  鈹斺攢鈹€ …<br>鈹?鈹溾攢鈹€ Notes&#x2F;                  鈽呪槄鈽呪槄鈽?澶囧繕褰?鈹?  鈹溾攢鈹€ Notes.sqlitedb      澶囧繕褰曟暟鎹簱<br>鈹?  鈹斺攢鈹€ …<br>鈹?鈹溾攢鈹€ Keychain&#x2F;               鈽呪槄鈽呪槄鈽?瀵嗛挜閾撅紙瀵嗙爜銆佽瘉涔︼級<br>鈹?  鈹溾攢鈹€ keydb.sqlitedb      瀵嗛挜閾炬暟鎹簱锛堝姞瀵嗭級<br>鈹?  鈹溾攢鈹€ keychain-2.db       鍙︿竴涓瘑閽ラ摼鏁版嵁搴?鈹?  鈹斺攢鈹€ …<br>鈹?鈹溾攢鈹€ Caches&#x2F;                 鈽呪槄鈽呪槄鈽?缂撳瓨鏁版嵁<br>鈹?  鈹溾攢鈹€ com.apple.Safari&#x2F;   Safari 缂撳瓨<br>鈹?  鈹溾攢鈹€ com.apple.mobilesafari&#x2F; Safari 缂撳瓨<br>鈹?  鈹溾攢鈹€ locationd&#x2F;          浣嶇疆缂撳瓨<br>鈹?  鈹溾攢鈹€ com.apple.CloudDocs&#x2F; iCloud 鏂囨。缂撳瓨<br>鈹?  鈹斺攢鈹€ …<br>鈹?鈹溾攢鈹€ Preferences&#x2F;            鈽呪槄鈽呪槄鈽?鐢ㄦ埛鍋忓ソ璁剧疆<br>鈹?  鈹溾攢鈹€ com.apple.springboard.plist    閿佸睆璁剧疆銆佸绾?鈹?  鈹溾攢鈹€ com.apple.wifi.plist           Wi-Fi 閰嶇疆<br>鈹?  鈹溾攢鈹€ com.apple.telephonyutilities.callhistoryd.plist  閫氳瘽璁板綍<br>鈹?  鈹溾攢鈹€ com.apple.Preferences.plist      绯荤粺璁剧疆锛堣瑷€銆佹椂鍖恒€佽摑鐗欑瓑锛?鈹?  鈹溾攢鈹€ com.apple.mobiletimerd.plist     闂归挓璁剧疆<br>鈹?  鈹斺攢鈹€ …<br>鈹?鈹溾攢鈹€ Photos&#x2F;                 鈽呪槄鈽呪槄鈽?鐓х墖鏁版嵁<br>鈹?  鈹溾攢鈹€ AssetData&#x2F;         鐓х墖鏂囦欢<br>鈹?  鈹溾攢鈹€ PhotoData&#x2F;         鐓х墖鏁版嵁搴?鈹?  鈹斺攢鈹€ …<br>鈹?鈹溾攢鈹€ Music&#x2F;                  鈽呪槄鈽呪槅鈽?闊充箰<br>鈹溾攢鈹€ Videos&#x2F;                 鈽呪槄鈽呪槅鈽?瑙嗛<br>鈹溾攢鈹€ Application Support&#x2F;    鈽呪槄鈽呪槅鈽?搴旂敤鏀寔鏂囦欢<br>鈹?  鈹溾攢鈹€ com.apple.AddressBook&#x2F; 閫氳褰曟敮鎸?鈹?  鈹溾攢鈹€ com.apple.CallHistory&#x2F; 閫氳瘽鍘嗗彶<br>鈹?  鈹斺攢鈹€ …<br>鈹?鈹溾攢鈹€ Maps&#x2F;                   鈽呪槄鈽呪槅鈽?鍦板浘鏁版嵁<br>鈹溾攢鈹€ Fitness&#x2F;                鈽呪槄鈽呪槅鈽?鍋ュ悍&#x2F;鍋ヨ韩鏁版嵁<br>鈹溾攢鈹€ Health&#x2F;                 鈽呪槄鈽呪槅鈽?鍋ュ悍鏁版嵁<br>鈹溾攢鈹€ CloudConfiguration&#x2F;     鈽呪槄鈽呪槅鈽?iCloud 閰嶇疆<br>鈹溾攢鈹€ CallHistoryDB&#x2F;          鈽呪槄鈽呪槄鈽?閫氳瘽璁板綍鏁版嵁搴?鈹溾攢鈹€ CallHistoryTransactions&#x2F; 鈽呪槄鈽呪槄鈽?閫氳瘽璁板綍浜嬪姟<br>鈹溾攢鈹€ VoiceMemos&#x2F;             鈽呪槄鈽呪槄鈽?璇煶澶囧繕褰?鈹溾攢鈹€ Reminders&#x2F;              鈽呪槄鈽呪槄鈽?鎻愰啋浜嬮」<br>鈹溾攢鈹€ Wallet&#x2F;                 鈽呪槄鈽呪槄鈽?Apple Pay锛堥挶鍖咃級<br>鈹溾攢鈹€ Home&#x2F;                   鈽呪槄鈽呪槅鈽?HomeKit 鏅鸿兘瀹跺眳閰嶇疆<br>鈹溾攢鈹€ Shortcuts&#x2F;              鈽呪槄鈽呪槅鈽?蹇嵎鎸囦护<br>鈹溾攢鈹€ Keyboard&#x2F;               鈽呪槄鈽呪槅鈽?閿洏鑷畾涔夎瘝搴?鈹溾攢鈹€ TextReplacement&#x2F;        鈽呪槄鈽呪槅鈽?鏂囨湰鏇挎崲瑙勫垯<br>鈹溾攢鈹€ Background&#x2F;             鈽呪槄鈽呪槅鈽?鍚庡彴娲诲姩璁板綍<br>鈹溾攢鈹€ CoreBrightness&#x2F;         鈽呪槄 灞忓箷浜害璁剧疆<br>鈹溾攢鈹€ DoNotDisturb&#x2F;           鈽呪槄鈽?鍕挎壈妯″紡璁剧疆<br>鈹溾攢鈹€ FaceTime&#x2F;               鈽呪槄鈽呪槄 FaceTime 閫氳瘽璁板綍<br>鈹溾攢鈹€ Mail&#x2F;                   鈽呪槄鈽?閭欢鏁版嵁<br>鈹溾攢鈹€ News&#x2F;                   鈽呪槄 鏂伴椈搴旂敤鏁版嵁<br>鈹溾攢鈹€ Stickers&#x2F;               鈽呪槄 璐寸焊鏁版嵁<br>鈹溾攢鈹€ Spotlight&#x2F;              鈽呪槄鈽?鎼滅储绱㈠紩<br>鈹溾攢鈹€ CloudKit&#x2F;               鈽呪槄鈽?iCloud 浜慘it 鏁版嵁<br>鈹溾攢鈹€ Webkit&#x2F;                 鈽呪槄鈽?WebKit 娴忚鍣ㄥ紩鎿庣紦瀛?鈹斺攢鈹€ …</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 3.3 `/var/mobile/Media/` 鈥?澶氬獟浣撴暟鎹?</span><br></pre></td></tr></table></figure>
-<p>&#x2F;var&#x2F;mobile&#x2F;Media&#x2F;<br>鈹溾攢鈹€ DCIM&#x2F;                   鈽呪槄鈽呪槄鈽?鐩告満鑳跺嵎锛堢収鐗?瑙嗛锛?鈹?  鈹溾攢鈹€ 100APPLE&#x2F;           鎸夋枃浠跺す缁勭粐鐓х墖瑙嗛<br>鈹?  鈹溾攢鈹€ 101APPLE&#x2F;<br>鈹?  鈹斺攢鈹€ …<br>鈹溾攢鈹€ Photos&#x2F;                 鈽呪槄鈽?鐓х墖绠＄悊鏁版嵁<br>鈹溾攢鈹€ iTunes_Control&#x2F;         鈽呪槄鈽?iTunes 鍚屾鏁版嵁<br>鈹溾攢鈹€ Application&#x2F;            鈽呪槄鈽?搴旂敤濯掍綋鏂囦欢<br>鈹斺攢鈹€ …</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**DCIM 鐩綍璇存槑锛?*</span><br><span class="line">- 鐓х墖鍜岃棰戞寜鏂囦欢澶瑰垎缁勶紝姣忎釜鏂囦欢澶瑰寘鍚害 100-200 涓枃浠?- 鏂囦欢鍛藉悕鏍煎紡锛歚IMG_0001.JPG`銆乣IMG_0001.MOV`</span><br><span class="line">- 鐓х墖涓寘鍚?EXIF 淇℃伅锛堟媿鎽勬椂闂淬€丟PS 鍧愭爣銆佽澶囧瀷鍙风瓑锛?</span><br><span class="line">### 3.4 `/var/mobile/Containers/` 鈥?App 娌欑洅</span><br><span class="line"></span><br><span class="line">姣忎釜 iOS 搴旂敤閮芥湁鐙珛鐨勬矙鐩掔洰褰曪紝浜掔浉闅旂锛?</span><br></pre></td></tr></table></figure>
-<p>&#x2F;var&#x2F;mobile&#x2F;Containers&#x2F;<br>鈹溾攢鈹€ Data&#x2F;<br>鈹?  鈹斺攢鈹€ Application&#x2F;<br>鈹?      鈹斺攢鈹€ <UUID>&#x2F;         姣忎釜 App 鏈夊敮涓€ UUID<br>鈹?          鈹溾攢鈹€ Document&#x2F;    App 鏂囨。锛堝彲琚?iTunes 鍚屾锛?鈹?          鈹溾攢鈹€ Library&#x2F;     App 閰嶇疆鍜岀紦瀛?鈹?          鈹?  鈹溾攢鈹€ Preferences&#x2F;  鍋忓ソ璁剧疆<br>鈹?          鈹?  鈹斺攢鈹€ Caches&#x2F;       缂撳瓨鏁版嵁<br>鈹?          鈹斺攢鈹€ tmp&#x2F;         涓存椂鏂囦欢<br>鈹溾攢鈹€ Bundle&#x2F;                  App 瀹夎鍖?鈹?  鈹斺攢鈹€ Application&#x2F;<br>鈹?      鈹斺攢鈹€ <UUID>&#x2F;<br>鈹?          鈹斺攢鈹€ <App>.app    App 涓荤▼搴忓寘<br>鈹溾攢鈹€ Shared&#x2F;                  鍏变韩瀹瑰櫒锛圓pp Groups锛?鈹?  鈹斺攢鈹€ AppGroup&#x2F;<br>鈹?      鈹斺攢鈹€ <GroupID>&#x2F;<br>鈹?          鈹斺攢鈹€ WhatsApp&#x2F;    WhatsApp 绛夊叡浜暟鎹?鈹斺攢鈹€ Manifest.db              鏄犲皠 UUID 鍒板簲鐢ㄥ悕绉?&#96;&#96;&#96;</p>
-<h3 id="3-5-var-root-鈥-Root-鐢ㄦ埛鐩綍锛堣秺鐙辩壒鏈夛級"><a href="#3-5-var-root-鈥-Root-鐢ㄦ埛鐩綍锛堣秺鐙辩壒鏈夛級" class="headerlink" title="3.5 /var/root/ 鈥?Root 鐢ㄦ埛鐩綍锛堣秺鐙辩壒鏈夛級"></a>3.5 <code>/var/root/</code> 鈥?Root 鐢ㄦ埛鐩綍锛堣秺鐙辩壒鏈夛級</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/var/root/</span><br><span class="line">鈹溾攢鈹€ .bash_history             鈽呪槄鈽呪槄鈽?鍛戒护鍘嗗彶璁板綍</span><br><span class="line">鈹溾攢鈹€ .ssh/                     鈽呪槄鈽呪槄 SSH 瀵嗛挜鍜岄厤缃?鈹?  鈹溾攢鈹€ authorized_keys       鎺堟潈鐨?SSH 鍏挜</span><br><span class="line">鈹?  鈹溾攢鈹€ id_rsa                SSH 绉侀挜</span><br><span class="line">鈹?  鈹溾攢鈹€ config                SSH 瀹㈡埛绔厤缃?鈹?  鈹斺攢鈹€ known_hosts           杩炴帴杩囩殑涓绘満</span><br><span class="line">鈹溾攢鈹€ MobileSubstrate/          鈽呪槄鈽呪槄鈽?瓒婄嫳 Tweak 閰嶇疆</span><br><span class="line">鈹溾攢鈹€ Document/                 鈽呪槄鈽?Root 鐢ㄦ埛鏂囨。</span><br><span class="line">鈹斺攢鈹€ ...</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-为什么-var-和-etc-既在根目录出现又在-private-下？"><a href="#2-2-为什么-var-和-etc-既在根目录出现又在-private-下？" class="headerlink" title="2.2 为什么 var 和 etc 既在根目录出现又在 private 下？"></a>2.2 为什么 <code>var</code> 和 <code>etc</code> 既在根目录出现又在 <code>private</code> 下？</h3><p>这是理解 iOS 文件系统的关键点：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/  (根目录)</span><br><span class="line">├── private/          ← private 文件夹</span><br><span class="line">│   ├── var/          ← 真正的运行时数据在此，含所有用户数据</span><br><span class="line">│   │   ├── mobile/   ← 用户数据（聊天记录、照片等）</span><br><span class="line">│   │   ├── root/     ← root 用户数据</span><br><span class="line">│   │   ├── db/       ← 系统数据库</span><br><span class="line">│   │   └── log/      ← 系统日志</span><br><span class="line">│   └── etc/          ← 系统配置文件（SSH 配置、hosts 等）</span><br><span class="line">├── var/              ← 根目录的 var（符号链接或快捷引用）</span><br><span class="line">└── etc/              ← 根目录的 etc（符号链接或快捷引用）</span><br></pre></td></tr></table></figure>
 
-<p>*<em>杩欐槸瓒婄嫳璁惧鐗规湁鐨勭洰褰曪紝鍙栬瘉浠峰€兼瀬楂樸€?</em> <code>.bash_history</code> 鍖呭惈鐢ㄦ埛鍦ㄨ秺鐙辫澶囦笂鎵ц鐨勬墍鏈夊懡浠ゃ€?</p>
-<h3 id="3-6-private-etc-鈥-绯荤粺閰嶇疆鏂囦欢"><a href="#3-6-private-etc-鈥-绯荤粺閰嶇疆鏂囦欢" class="headerlink" title="3.6 /private/etc/ 鈥?绯荤粺閰嶇疆鏂囦欢"></a>3.6 <code>/private/etc/</code> 鈥?绯荤粺閰嶇疆鏂囦欢</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/private/etc/</span><br><span class="line">鈹溾攢鈹€ hosts                     鈽呪槄鈽?鍩熷悕鏄犲皠閰嶇疆</span><br><span class="line">鈹溾攢鈹€ passwd                    鈽呪槄鈽?鐢ㄦ埛璐︽埛鍒楄〃</span><br><span class="line">鈹溾攢鈹€ group                     鈽呪槄鈽?鐢ㄦ埛缁勪俊鎭?鈹溾攢鈹€ ssh/                      鈽呪槄鈽呪槄 SSH 杩滅▼鐧诲綍閰嶇疆</span><br><span class="line">鈹?  鈹溾攢鈹€ sshd_config           SSH 鏈嶅姟绔厤缃紙鏄惁寮€鍚€佺鍙ｃ€佽璇佹柟寮忥級</span><br><span class="line">鈹?  鈹斺攢鈹€ ssh_config            SSH 瀹㈡埛绔厤缃?鈹溾攢鈹€ resolv.conf               鈽呪槄 DNS 瑙ｆ瀽閰嶇疆</span><br><span class="line">鈹溾攢鈹€ hostconfig                鈽呪槄 涓绘満绯荤粺閰嶇疆</span><br><span class="line">鈹溾攢鈹€ hosts.deny                鈽呪槄 鍏佽/鎷掔粷杩炴帴鐨勪富鏈?鈹溾攢鈹€ hosts.allow               鈽呪槄 鍏佽杩炴帴鐨勪富鏈?鈹溾攢鈹€ sudoers                   鈽呪槄鈽?sudo 鏉冮檺閰嶇疆</span><br><span class="line">鈹溾攢鈹€ xart.conf                 鈽?瀛楃闆嗛厤缃?鈹溾攢鈹€ protocols                 鈽?缃戠粶鍗忚瀹氫箟</span><br><span class="line">鈹溾攢鈹€ services                  鈽?缃戠粶鏈嶅姟瀹氫箟</span><br><span class="line">鈹斺攢鈹€ ...</span><br></pre></td></tr></table></figure>
+<p><strong>根目录的 <code>/var</code> 和 <code>/private/var</code>、<code>/etc</code> 和 <code>/private/etc</code> 本质上是同一个位置。</strong> iOS 使用符号链接（symbolic link）让 <code>/var</code> 指向 <code>/private/var</code>，<code>/etc</code> 指向 <code>/private/etc</code>。这是 Unix 系统的常见做法。</p>
+<p><strong>取证时你应该走的路径是 <code>/private/var/</code></strong>，因为这是完整路径，不会混淆。</p>
+<h3 id="2-3-private-目录详解"><a href="#2-3-private-目录详解" class="headerlink" title="2.3 /private/ 目录详解"></a>2.3 <code>/private/</code> 目录详解</h3><p><code>/private/</code> 是 iOS 的”私有系统目录”，存放系统运行时产生的所有数据，是取证的核心区域：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/private/</span><br><span class="line">├── var/              ← 最关键，99% 的取证数据在这里</span><br><span class="line">├── etc/              ← 系统配置文件</span><br><span class="line">├── var/run/          ← 运行时状态文件</span><br><span class="line">├── var/run/utmp      ← 登录用户记录</span><br><span class="line">├── var/db/           ← 系统数据库</span><br><span class="line">├── var/mobilebackup/ ← 备份数据</span><br><span class="line">├── var/root/         ← root 用户数据</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-7-System-鈥-iOS-绯荤粺鏂囦欢"><a href="#3-7-System-鈥-iOS-绯荤粺鏂囦欢" class="headerlink" title="3.7 /System/ 鈥?iOS 绯荤粺鏂囦欢"></a>3.7 <code>/System/</code> 鈥?iOS 绯荤粺鏂囦欢</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/System/</span><br><span class="line">鈹溾攢鈹€ Library/                   iOS 绯荤粺妗嗘灦鍜屽唴鏍告墿灞?鈹溾攢鈹€ Kernel/                    鍐呮牳鏂囦欢</span><br><span class="line">鈹溾攢鈹€ Mobile/                    iOS 绯荤粺搴旂敤锛堜笉鍙垹闄わ級</span><br><span class="line">鈹?  鈹溾攢鈹€ Settings.app</span><br><span class="line">鈹?  鈹溾攢鈹€ Safari.app</span><br><span class="line">鈹?  鈹斺攢鈹€ ...</span><br><span class="line">鈹斺攢鈹€ ...</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-Library-（系统级-Library）详解"><a href="#2-4-Library-（系统级-Library）详解" class="headerlink" title="2.4 /Library/（系统级 Library）详解"></a>2.4 <code>/Library/</code>（系统级 Library）详解</h3><p>这是<strong>系统级别的 Library</strong>，与 <code>/var/mobile/Library/</code>（用户级别的 Library）不同：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/Library/</span><br><span class="line">├── Preferences/          ← 系统级偏好设置</span><br><span class="line">│   ├── .GlobalPreferences.plist  ← 系统全局设置（语言、时区、键盘等）</span><br><span class="line">│   └── ...</span><br><span class="line">├── Audio/                ← 系统音频（铃声、通知音）</span><br><span class="line">├── Documents/            ← 系统文档</span><br><span class="line">├── Application Support/  ← 系统应用的支持文件</span><br><span class="line">├── MobileAsset/          ← 系统资产（键盘、语音识别等）</span><br><span class="line">├── Keyboard/             ← 键盘数据</span><br><span class="line">├── Accessibility/        ← 辅助功能设置</span><br><span class="line">├── Location/             ← 定位服务</span><br><span class="line">├── Timezones/            ← 时区配置</span><br><span class="line">└── ...</span><br><span class="line"></span><br><span class="line">/Library/MobileSubstrate/  ← 越狱核心框架</span><br><span class="line">├── DynamicLibraries/     ← Tweak 插件的动态库</span><br><span class="line">├── MobileSubstrate.dylib ← MobileSubstrate 主文件</span><br><span class="line">└── Bootstrap/            ← 插件启动配置</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-8-Applications-鈥-瓒婄嫳搴旂敤鐩綍"><a href="#3-8-Applications-鈥-瓒婄嫳搴旂敤鐩綍" class="headerlink" title="3.8 /Applications/ 鈥?瓒婄嫳搴旂敤鐩綍"></a>3.8 <code>/Applications/</code> 鈥?瓒婄嫳搴旂敤鐩綍</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/Applications/</span><br><span class="line">鈹溾攢鈹€ Cydia.app                 Cydea 搴旂敤鍟嗗簵</span><br><span class="line">鈹溾攢鈹€ AppName.app               瓒婄嫳瀹夎鐨?App锛堥潪 App Store锛?鈹斺攢鈹€ ...</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-9-Library-MobileSubstrate-鈥-瓒婄嫳妗嗘灦"><a href="#3-9-Library-MobileSubstrate-鈥-瓒婄嫳妗嗘灦" class="headerlink" title="3.9 /Library/MobileSubstrate/ 鈥?瓒婄嫳妗嗘灦"></a>3.9 <code>/Library/MobileSubstrate/</code> 鈥?瓒婄嫳妗嗘灦</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/Library/MobileSubstrate/</span><br><span class="line">鈹溾攢鈹€ MobileSubstrate.dylib      瓒婄嫳鏍稿績妗嗘灦涓绘枃浠?鈹溾攢鈹€ DynamicLibraries/          鈽呪槄鈽呪槄鈽?娉ㄥ叆鐨?Tweak 鎻掍欢</span><br><span class="line">鈹?  鈹溾攢鈹€ TweakName.dylib</span><br><span class="line">鈹?  鈹斺攢鈹€ ...</span><br><span class="line">鈹溾攢鈹€ Bootstrap/                 鈽呪槄鈽呪槄鈽?鎻掍欢鍚姩閰嶇疆</span><br><span class="line">鈹?  鈹溾攢鈹€ com.saurik.Cydia.plist</span><br><span class="line">鈹?  鈹斺攢鈹€ ...</span><br><span class="line">鈹溾攢鈹€ Extensions/                鈽呪槄 鎵╁睍鎻掍欢</span><br><span class="line">鈹斺攢鈹€ ...</span><br></pre></td></tr></table></figure>
-
+<p><strong>取证价值：</strong> <code>MobileSubstrate</code> 目录是判定越狱的铁证，也是查看安装了哪些越狱插件的关键。</p>
 <hr>
-<h2 id="鍥涖€侀珮浠峰€煎彇璇佺洰褰曪紙鎸変紭鍏堢骇鎺掑簭锛"><a href="#鍥涖€侀珮浠峰€煎彇璇佺洰褰曪紙鎸変紭鍏堢骇鎺掑簭锛" class="headerlink" title="鍥涖€侀珮浠峰€煎彇璇佺洰褰曪紙鎸変紭鍏堢骇鎺掑簭锛?"></a>鍥涖€侀珮浠峰€煎彇璇佺洰褰曪紙鎸変紭鍏堢骇鎺掑簭锛?</h2><h3 id="绗竴姊槦-鈽呪槄鈽呪槄鈽咃紙鏈€楂樹紭鍏堢骇锛"><a href="#绗竴姊槦-鈽呪槄鈽呪槄鈽咃紙鏈€楂樹紭鍏堢骇锛" class="headerlink" title="绗竴姊槦 鈽呪槄鈽呪槄鈽咃紙鏈€楂樹紭鍏堢骇锛?"></a>绗竴姊槦 鈽呪槄鈽呪槄鈽咃紙鏈€楂樹紭鍏堢骇锛?</h3><h4 id="4-1-閫氳璁板綍"><a href="#4-1-閫氳璁板綍" class="headerlink" title="4.1 閫氳璁板綍"></a>4.1 閫氳璁板綍</h4><table>
+<h2 id="三、各核心目录的子文件夹详解"><a href="#三、各核心目录的子文件夹详解" class="headerlink" title="三、各核心目录的子文件夹详解"></a>三、各核心目录的子文件夹详解</h2><h3 id="3-1-var-mobile-—-用户主目录（取证核心！）"><a href="#3-1-var-mobile-—-用户主目录（取证核心！）" class="headerlink" title="3.1 /var/mobile/ — 用户主目录（取证核心！）"></a>3.1 <code>/var/mobile/</code> — 用户主目录（取证核心！）</h3><p>这是普通用户（mobile 用户）的数据存放处，包含聊天记录、照片、联系人等几乎所有用户数据：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/var/mobile/</span><br><span class="line">├── Library/              ← ★★★★★ 用户级 Library，取证最核心区域（见 3.2）</span><br><span class="line">├── Media/                ← ★★★★★ 多媒体数据（照片、视频）</span><br><span class="line">├── Containers/           ← ★★★★☆ App 沙盒数据</span><br><span class="line">├── Documents/            ← ★★★★☆ 用户文档</span><br><span class="line">├── Downloads/            ← ★★★☆☆ 下载的文件</span><br><span class="line">├── Movies/               ★★★☆☆ 电影文件</span><br><span class="line">├── Music/                ★★★☆☆ 音乐文件</span><br><span class="line">├── PhotoData/            ★★★☆☆ 照片数据库和元数据</span><br><span class="line">├── SMS/                  ★★★★★ 短信数据库（旧版本 iOS）</span><br><span class="line">├── Documents/</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
+
+<h4 id="子目录说明："><a href="#子目录说明：" class="headerlink" title="子目录说明："></a>子目录说明：</h4><table>
 <thead>
 <tr>
-<th>鏁版嵁</th>
-<th>璺緞</th>
-<th>鏍煎紡</th>
+<th>子目录</th>
+<th>内容</th>
+<th>取证价值</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>鐭俊&#x2F;iMessage</td>
+<td><code>Library/</code></td>
+<td>用户偏好、Safari 历史、通讯录等</td>
+<td>★★★★★ 最高</td>
+</tr>
+<tr>
+<td><code>Media/</code></td>
+<td>照片、视频、音乐</td>
+<td>★★★★★ 最高</td>
+</tr>
+<tr>
+<td><code>Containers/</code></td>
+<td>App 沙盒隔离目录</td>
+<td>★★★★☆ 高</td>
+</tr>
+<tr>
+<td><code>Documents/</code></td>
+<td>用户文档</td>
+<td>★★★★☆ 高</td>
+</tr>
+<tr>
+<td><code>Downloads/</code></td>
+<td>下载文件</td>
+<td>★★★☆☆ 中</td>
+</tr>
+<tr>
+<td><code>PhotoData/</code></td>
+<td>照片数据库和缩略图</td>
+<td>★★★★☆ 高</td>
+</tr>
+</tbody></table>
+<h3 id="3-2-var-mobile-Library-—-用户-Library（取证最核心！）"><a href="#3-2-var-mobile-Library-—-用户-Library（取证最核心！）" class="headerlink" title="3.2 /var/mobile/Library/ — 用户 Library（取证最核心！）"></a>3.2 <code>/var/mobile/Library/</code> — 用户 Library（取证最核心！）</h3><p>这是整个 iOS 文件系统中<strong>最有取证价值的目录</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">/var/mobile/Library/</span><br><span class="line">├── SMS/                    ★★★★★ 短信/iMessage 数据库</span><br><span class="line">│   ├── sms.db              SQLite 数据库，所有短信记录</span><br><span class="line">│   ├── imessage.db         iMessage 记录</span><br><span class="line">│   └── ...</span><br><span class="line">│</span><br><span class="line">├── Safari/                 ★★★★★ Safari 浏览器历史</span><br><span class="line">│   ├── History.db          浏览器历史记录</span><br><span class="line">│   ├── Bookmarks.plist     书签</span><br><span class="line">│   ├── WebpageImages/      网页截图缩略图</span><br><span class="line">│   └── ...</span><br><span class="line">│</span><br><span class="line">├── AddressBook/            ★★★★★ 通讯录</span><br><span class="line">│   ├── AddressBook.sqlitedb 通讯录数据库</span><br><span class="line">│   ├── AddressBook-images.db 联系人头像</span><br><span class="line">│   └── ...</span><br><span class="line">│</span><br><span class="line">├── Calendar/               ★★★★★ 日历</span><br><span class="line">│   ├── Calendar.sqlitedb   日历事件数据库</span><br><span class="line">│   └── ...</span><br><span class="line">│</span><br><span class="line">├── Notes/                  ★★★★☆ 备忘录</span><br><span class="line">│   ├── Notes.sqlitedb      备忘录数据库</span><br><span class="line">│   └── ...</span><br><span class="line">│</span><br><span class="line">├── Keychain/               ★★★★★ 密钥链（密码、证书）</span><br><span class="line">│   ├── keydb.sqlitedb      密钥链数据库（加密）</span><br><span class="line">│   ├── keychain-2.db       另一个密钥链数据库</span><br><span class="line">│   └── ...</span><br><span class="line">│</span><br><span class="line">├── Caches/                 ★★★★☆ 缓存数据</span><br><span class="line">│   ├── com.apple.Safari/   Safari 缓存</span><br><span class="line">│   ├── com.apple.mobilesafari/ Safari 缓存</span><br><span class="line">│   ├── locationd/          位置缓存</span><br><span class="line">│   ├── com.apple.CloudDocs/ iCloud 文档缓存</span><br><span class="line">│   └── ...</span><br><span class="line">│</span><br><span class="line">├── Preferences/            ★★★★☆ 用户偏好设置</span><br><span class="line">│   ├── com.apple.springboard.plist    锁屏设置、壁纸</span><br><span class="line">│   ├── com.apple.wifi.plist           Wi-Fi 配置</span><br><span class="line">│   ├── com.apple.telephonyutilities.callhistoryd.plist  通话记录</span><br><span class="line">│   ├── com.apple.Preferences.plist      系统设置（语言、时区、蓝牙等）</span><br><span class="line">│   ├── com.apple.mobiletimerd.plist     闹钟设置</span><br><span class="line">│   └── ...</span><br><span class="line">│</span><br><span class="line">├── Photos/                 ★★★★☆ 照片数据</span><br><span class="line">│   ├── AssetData/         照片文件</span><br><span class="line">│   ├── PhotoData/         照片数据库</span><br><span class="line">│   └── ...</span><br><span class="line">│</span><br><span class="line">├── Music/                  ★★★☆☆ 音乐</span><br><span class="line">├── Videos/                 ★★★☆☆ 视频</span><br><span class="line">├── Application Support/    ★★★☆☆ 应用支持文件</span><br><span class="line">│   ├── com.apple.AddressBook/ 通讯录支持</span><br><span class="line">│   ├── com.apple.CallHistory/ 通话历史</span><br><span class="line">│   └── ...</span><br><span class="line">│</span><br><span class="line">├── Maps/                   ★★★☆☆ 地图数据</span><br><span class="line">├── Fitness/                ★★★☆☆ 健康/健身数据</span><br><span class="line">├── Health/                 ★★★☆☆ 健康数据</span><br><span class="line">├── CloudConfiguration/     ★★★☆☆ iCloud 配置</span><br><span class="line">├── CallHistoryDB/          ★★★★☆ 通话记录数据库</span><br><span class="line">├── CallHistoryTransactions/ ★★★★☆ 通话记录事务</span><br><span class="line">├── VoiceMemos/             ★★★★☆ 语音备忘录</span><br><span class="line">├── Reminders/              ★★★★☆ 提醒事项</span><br><span class="line">├── Wallet/                 ★★★★☆ Apple Pay（钱包）</span><br><span class="line">├── Home/                   ★★★☆☆ HomeKit 智能家居配置</span><br><span class="line">├── Shortcuts/              ★★★☆☆ 快捷指令</span><br><span class="line">├── Keyboard/               ★★★☆☆ 键盘自定义词库</span><br><span class="line">├── TextReplacement/        ★★★☆☆ 文本替换规则</span><br><span class="line">├── Background/             ★★★☆☆ 后台活动记录</span><br><span class="line">├── CoreBrightness/         ★★ 屏幕亮度设置</span><br><span class="line">├── DoNotDisturb/           ★★★ 勿扰模式设置</span><br><span class="line">├── FaceTime/               ★★★★ FaceTime 通话记录</span><br><span class="line">├── Mail/                   ★★★ 邮件数据</span><br><span class="line">├── News/                   ★★ 新闻应用数据</span><br><span class="line">├── Stickers/               ★★ 贴纸数据</span><br><span class="line">├── Spotlight/              ★★★ 搜索索引</span><br><span class="line">├── CloudKit/               ★★★ iCloud 云Kit 数据</span><br><span class="line">├── Webkit/                 ★★★ WebKit 浏览器引擎缓存</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-var-mobile-Media-—-多媒体数据"><a href="#3-3-var-mobile-Media-—-多媒体数据" class="headerlink" title="3.3 /var/mobile/Media/ — 多媒体数据"></a>3.3 <code>/var/mobile/Media/</code> — 多媒体数据</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/var/mobile/Media/</span><br><span class="line">├── DCIM/                   ★★★★★ 相机胶卷（照片/视频）</span><br><span class="line">│   ├── 100APPLE/           按文件夹组织照片视频</span><br><span class="line">│   ├── 101APPLE/</span><br><span class="line">│   └── ...</span><br><span class="line">├── Photos/                 ★★★ 照片管理数据</span><br><span class="line">├── iTunes_Control/         ★★★ iTunes 同步数据</span><br><span class="line">├── Application/            ★★★ 应用媒体文件</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
+
+<p><strong>DCIM 目录说明：</strong></p>
+<ul>
+<li>照片和视频按文件夹分组，每个文件夹包含约 100-200 个文件</li>
+<li>文件命名格式：<code>IMG_0001.JPG</code>、<code>IMG_0001.MOV</code></li>
+<li>照片中包含 EXIF 信息（拍摄时间、GPS 坐标、设备型号等）</li>
+</ul>
+<h3 id="3-4-var-mobile-Containers-—-App-沙盒"><a href="#3-4-var-mobile-Containers-—-App-沙盒" class="headerlink" title="3.4 /var/mobile/Containers/ — App 沙盒"></a>3.4 <code>/var/mobile/Containers/</code> — App 沙盒</h3><p>每个 iOS 应用都有独立的沙盒目录，互相隔离：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/var/mobile/Containers/</span><br><span class="line">├── Data/</span><br><span class="line">│   └── Application/</span><br><span class="line">│       └── &lt;UUID&gt;/         每个 App 有唯一 UUID</span><br><span class="line">│           ├── Document/    App 文档（可被 iTunes 同步）</span><br><span class="line">│           ├── Library/     App 配置和缓存</span><br><span class="line">│           │   ├── Preferences/  偏好设置</span><br><span class="line">│           │   └── Caches/       缓存数据</span><br><span class="line">│           └── tmp/         临时文件</span><br><span class="line">├── Bundle/                  App 安装包</span><br><span class="line">│   └── Application/</span><br><span class="line">│       └── &lt;UUID&gt;/</span><br><span class="line">│           └── &lt;App&gt;.app    App 主程序包</span><br><span class="line">├── Shared/                  共享容器（App Groups）</span><br><span class="line">│   └── AppGroup/</span><br><span class="line">│       └── &lt;GroupID&gt;/</span><br><span class="line">│           └── WhatsApp/    WhatsApp 等共享数据</span><br><span class="line">└── Manifest.db              映射 UUID 到应用名称</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-5-var-root-—-Root-用户目录（越狱特有）"><a href="#3-5-var-root-—-Root-用户目录（越狱特有）" class="headerlink" title="3.5 /var/root/ — Root 用户目录（越狱特有）"></a>3.5 <code>/var/root/</code> — Root 用户目录（越狱特有）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/var/root/</span><br><span class="line">├── .bash_history             ★★★★★ 命令历史记录</span><br><span class="line">├── .ssh/                     ★★★★ SSH 密钥和配置</span><br><span class="line">│   ├── authorized_keys       授权的 SSH 公钥</span><br><span class="line">│   ├── id_rsa                SSH 私钥</span><br><span class="line">│   ├── config                SSH 客户端配置</span><br><span class="line">│   └── known_hosts           连接过的主机</span><br><span class="line">├── MobileSubstrate/          ★★★★★ 越狱 Tweak 配置</span><br><span class="line">├── Document/                 ★★★ Root 用户文档</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
+
+<p><strong>这是越狱设备特有的目录，取证价值极高。</strong> <code>.bash_history</code> 包含用户在越狱设备上执行的所有命令。</p>
+<h3 id="3-6-private-etc-—-系统配置文件"><a href="#3-6-private-etc-—-系统配置文件" class="headerlink" title="3.6 /private/etc/ — 系统配置文件"></a>3.6 <code>/private/etc/</code> — 系统配置文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/private/etc/</span><br><span class="line">├── hosts                     ★★★ 域名映射配置</span><br><span class="line">├── passwd                    ★★★ 用户账户列表</span><br><span class="line">├── group                     ★★★ 用户组信息</span><br><span class="line">├── ssh/                      ★★★★ SSH 远程登录配置</span><br><span class="line">│   ├── sshd_config           SSH 服务端配置（是否开启、端口、认证方式）</span><br><span class="line">│   └── ssh_config            SSH 客户端配置</span><br><span class="line">├── resolv.conf               ★★ DNS 解析配置</span><br><span class="line">├── hostconfig                ★★ 主机系统配置</span><br><span class="line">├── hosts.deny                ★★ 允许/拒绝连接的主机</span><br><span class="line">├── hosts.allow               ★★ 允许连接的主机</span><br><span class="line">├── sudoers                   ★★★ sudo 权限配置</span><br><span class="line">├── xart.conf                 ★ 字符集配置</span><br><span class="line">├── protocols                 ★ 网络协议定义</span><br><span class="line">├── services                  ★ 网络服务定义</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-7-System-—-iOS-系统文件"><a href="#3-7-System-—-iOS-系统文件" class="headerlink" title="3.7 /System/ — iOS 系统文件"></a>3.7 <code>/System/</code> — iOS 系统文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/System/</span><br><span class="line">├── Library/                   iOS 系统框架和内核扩展</span><br><span class="line">├── Kernel/                    内核文件</span><br><span class="line">├── Mobile/                    iOS 系统应用（不可删除）</span><br><span class="line">│   ├── Settings.app</span><br><span class="line">│   ├── Safari.app</span><br><span class="line">│   └── ...</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-8-Applications-—-越狱应用目录"><a href="#3-8-Applications-—-越狱应用目录" class="headerlink" title="3.8 /Applications/ — 越狱应用目录"></a>3.8 <code>/Applications/</code> — 越狱应用目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/Applications/</span><br><span class="line">├── Cydia.app                 Cydea 应用商店</span><br><span class="line">├── AppName.app               越狱安装的 App（非 App Store）</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-9-Library-MobileSubstrate-—-越狱框架"><a href="#3-9-Library-MobileSubstrate-—-越狱框架" class="headerlink" title="3.9 /Library/MobileSubstrate/ — 越狱框架"></a>3.9 <code>/Library/MobileSubstrate/</code> — 越狱框架</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/Library/MobileSubstrate/</span><br><span class="line">├── MobileSubstrate.dylib      越狱核心框架主文件</span><br><span class="line">├── DynamicLibraries/          ★★★★★ 注入的 Tweak 插件</span><br><span class="line">│   ├── TweakName.dylib</span><br><span class="line">│   └── ...</span><br><span class="line">├── Bootstrap/                 ★★★★★ 插件启动配置</span><br><span class="line">│   ├── com.saurik.Cydia.plist</span><br><span class="line">│   └── ...</span><br><span class="line">├── Extensions/                ★★ 扩展插件</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="四、高价值取证目录（按优先级排序）"><a href="#四、高价值取证目录（按优先级排序）" class="headerlink" title="四、高价值取证目录（按优先级排序）"></a>四、高价值取证目录（按优先级排序）</h2><h3 id="第一梯队-★★★★★（最高优先级）"><a href="#第一梯队-★★★★★（最高优先级）" class="headerlink" title="第一梯队 ★★★★★（最高优先级）"></a>第一梯队 ★★★★★（最高优先级）</h3><h4 id="4-1-通讯记录"><a href="#4-1-通讯记录" class="headerlink" title="4.1 通讯记录"></a>4.1 通讯记录</h4><table>
+<thead>
+<tr>
+<th>数据</th>
+<th>路径</th>
+<th>格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>短信&#x2F;iMessage</td>
 <td><code>/var/mobile/Library/SMS/sms.db</code></td>
 <td>SQLite</td>
 </tr>
 <tr>
-<td>FaceTime 璁板綍</td>
+<td>FaceTime 记录</td>
 <td><code>/var/mobile/Library/FaceTime/</code></td>
 <td>SQLite&#x2F;Property List</td>
 </tr>
 <tr>
-<td>閫氳瘽璁板綍</td>
+<td>通话记录</td>
 <td><code>/var/mobile/Library/CallHistoryDB/</code></td>
 <td>SQLite</td>
 </tr>
@@ -337,792 +394,803 @@
 <td>SQLite</td>
 </tr>
 <tr>
-<td>寰俊</td>
+<td>微信</td>
 <td><code>/var/mobile/Containers/Data/Application/*/Documents/</code></td>
-<td>鍔犲瘑 SQLite</td>
+<td>加密 SQLite</td>
 </tr>
 </tbody></table>
-<p><strong>SMS 鏁版嵁搴撳叧閿瓧娈碉細</strong></p>
+<p><strong>SMS 数据库关键字段：</strong></p>
 <ul>
-<li><code>rowid</code>锛氳褰?ID</li>
-<li><code>handle_id</code>锛氬彂閫佽€?鎺ユ敹鑰呮墜鏈哄彿</li>
-<li><code>text</code>锛氱煭淇″唴瀹?- <code>date</code>锛氭椂闂存埑锛圕ore Foundation Date锛?- <code>service</code>锛氭湇鍔＄被鍨嬶紙SMS&#x2F;iMessage锛?- <code>is_from_me</code>锛氭槸鍚﹁嚜宸卞彂閫侊紙0&#x3D;瀵规柟锛?&#x3D;鑷繁锛?- <code>is_read</code>锛氭槸鍚﹀凡璇?</li>
+<li><code>rowid</code>：记录 ID</li>
+<li><code>handle_id</code>：发送者&#x2F;接收者手机号</li>
+<li><code>text</code>：短信内容</li>
+<li><code>date</code>：时间戳（Core Foundation Date）</li>
+<li><code>service</code>：服务类型（SMS&#x2F;iMessage）</li>
+<li><code>is_from_me</code>：是否自己发送（0&#x3D;对方，1&#x3D;自己）</li>
+<li><code>is_read</code>：是否已读</li>
 </ul>
-<h4 id="4-2-娴忚鍣ㄥ巻鍙茶褰"><a href="#4-2-娴忚鍣ㄥ巻鍙茶褰" class="headerlink" title="4.2 娴忚鍣ㄥ巻鍙茶褰?"></a>4.2 娴忚鍣ㄥ巻鍙茶褰?</h4><table>
+<h4 id="4-2-浏览器历史记录"><a href="#4-2-浏览器历史记录" class="headerlink" title="4.2 浏览器历史记录"></a>4.2 浏览器历史记录</h4><table>
 <thead>
 <tr>
-<th>娴忚鍣?</th>
-<th>璺緞</th>
-<th>璇存槑</th>
+<th>浏览器</th>
+<th>路径</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>Safari</td>
 <td><code>/var/mobile/Library/Safari/History.db</code></td>
-<td><code>History.db</code>銆乣Bookmarks.plist&#96;</td>
+<td><code>History.db</code>、<code>Bookmarks.plist</code></td>
 </tr>
 <tr>
 <td>Chrome</td>
 <td><code>/var/mobile/Containers/.../Library/WebKit/</code></td>
-<td><code>History</code>銆乣Favorites&#96;</td>
+<td><code>History</code>、<code>Favorites</code></td>
 </tr>
 </tbody></table>
-<h4 id="4-3-閫氳褰曚笌鏃ュ巻"><a href="#4-3-閫氳褰曚笌鏃ュ巻" class="headerlink" title="4.3 閫氳褰曚笌鏃ュ巻"></a>4.3 閫氳褰曚笌鏃ュ巻</h4><table>
+<h4 id="4-3-通讯录与日历"><a href="#4-3-通讯录与日历" class="headerlink" title="4.3 通讯录与日历"></a>4.3 通讯录与日历</h4><table>
 <thead>
 <tr>
-<th>鏁版嵁</th>
-<th>璺緞</th>
+<th>数据</th>
+<th>路径</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>閫氳褰?</td>
+<td>通讯录</td>
 <td><code>/var/mobile/Library/AddressBook/AddressBook.sqlitedb</code></td>
 </tr>
 <tr>
-<td>鏃ュ巻</td>
+<td>日历</td>
 <td><code>/var/mobile/Library/Calendar/Calendar.sqlitedb</code></td>
 </tr>
 <tr>
-<td>澶囧繕褰?</td>
+<td>备忘录</td>
 <td><code>/var/mobile/Library/Notes/Notes.sqlitedb</code></td>
 </tr>
 <tr>
-<td>鎻愰啋浜嬮」</td>
+<td>提醒事项</td>
 <td><code>/var/mobile/Library/Reminders/</code></td>
 </tr>
 </tbody></table>
-<h4 id="4-4-鐓х墖涓庤棰"><a href="#4-4-鐓х墖涓庤棰" class="headerlink" title="4.4 鐓х墖涓庤棰?"></a>4.4 鐓х墖涓庤棰?</h4><table>
+<h4 id="4-4-照片与视频"><a href="#4-4-照片与视频" class="headerlink" title="4.4 照片与视频"></a>4.4 照片与视频</h4><table>
 <thead>
 <tr>
-<th>绫诲瀷</th>
-<th>璺緞</th>
-<th>璇存槑</th>
+<th>类型</th>
+<th>路径</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>鐩告満鑳跺嵎</td>
+<td>相机胶卷</td>
 <td><code>/var/mobile/Media/DCIM/</code></td>
-<td>鎸夋枃浠跺す缁勭粐鐓х墖</td>
+<td>按文件夹组织照片</td>
 </tr>
 <tr>
-<td>鐓х墖搴?</td>
+<td>照片库</td>
 <td><code>/var/mobile/Media/PhotoData/</code></td>
-<td>鐓х墖鏁版嵁搴?</td>
+<td>照片数据库</td>
 </tr>
 <tr>
-<td>璇煶澶囧繕褰?</td>
+<td>语音备忘录</td>
 <td><code>/var/mobile/Library/VoiceMemos/</code></td>
-<td>褰曢煶鏂囦欢</td>
+<td>录音文件</td>
 </tr>
 <tr>
-<td>鎴浘</td>
+<td>截图</td>
 <td><code>/var/mobile/Media/PhotoData/</code></td>
-<td>鎴浘鏁版嵁</td>
+<td>截图数据</td>
 </tr>
 </tbody></table>
-<h4 id="4-5-瀵嗛挜閾"><a href="#4-5-瀵嗛挜閾" class="headerlink" title="4.5 瀵嗛挜閾?"></a>4.5 瀵嗛挜閾?</h4><table>
+<h4 id="4-5-密钥链"><a href="#4-5-密钥链" class="headerlink" title="4.5 密钥链"></a>4.5 密钥链</h4><table>
 <thead>
 <tr>
-<th>鏁版嵁</th>
-<th>璺緞</th>
-<th>璇存槑</th>
+<th>数据</th>
+<th>路径</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>Keychain</td>
 <td><code>/var/mobile/Library/Keychain/keydb.sqlitedb</code></td>
-<td>瀵嗙爜銆佽瘉涔︺€佷护鐗岋紙鍔犲瘑锛?</td>
+<td>密码、证书、令牌（加密）</td>
 </tr>
 </tbody></table>
-<h4 id="4-6-瓒婄嫳鐗规湁-鈥-鍛戒护鍘嗗彶"><a href="#4-6-瓒婄嫳鐗规湁-鈥-鍛戒护鍘嗗彶" class="headerlink" title="4.6 瓒婄嫳鐗规湁 鈥?鍛戒护鍘嗗彶"></a>4.6 瓒婄嫳鐗规湁 鈥?鍛戒护鍘嗗彶</h4><table>
+<h4 id="4-6-越狱特有-—-命令历史"><a href="#4-6-越狱特有-—-命令历史" class="headerlink" title="4.6 越狱特有 — 命令历史"></a>4.6 越狱特有 — 命令历史</h4><table>
 <thead>
 <tr>
-<th>鏁版嵁</th>
-<th>璺緞</th>
-<th>璇存槑</th>
+<th>数据</th>
+<th>路径</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Bash 鍘嗗彶</td>
+<td>Bash 历史</td>
 <td><code>/var/root/.bash_history</code></td>
-<td>瓒婄嫳鍚庢墽琛岀殑鎵€鏈夊懡浠?</td>
+<td>越狱后执行的所有命令</td>
 </tr>
 </tbody></table>
-<h3 id="绗簩姊槦-鈽呪槄鈽呪槄鈽嗭紙楂樹紭鍏堢骇锛"><a href="#绗簩姊槦-鈽呪槄鈽呪槄鈽嗭紙楂樹紭鍏堢骇锛" class="headerlink" title="绗簩姊槦 鈽呪槄鈽呪槄鈽嗭紙楂樹紭鍏堢骇锛?"></a>绗簩姊槦 鈽呪槄鈽呪槄鈽嗭紙楂樹紭鍏堢骇锛?</h3><h4 id="4-7-App-娌欑洅鏁版嵁"><a href="#4-7-App-娌欑洅鏁版嵁" class="headerlink" title="4.7 App 娌欑洅鏁版嵁"></a>4.7 App 娌欑洅鏁版嵁</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/var/mobile/Containers/Data/Application/&lt;UUID&gt;/</span><br><span class="line">鈹溾攢鈹€ Document/       搴旂敤鏂囨。</span><br><span class="line">鈹溾攢鈹€ Library/</span><br><span class="line">鈹?  鈹溾攢鈹€ Preferences/  鍋忓ソ璁剧疆锛圥list 鏍煎紡锛?鈹?  鈹斺攢鈹€ Caches/       缂撳瓨鏁版嵁</span><br><span class="line">鈹斺攢鈹€ tmp/            涓存椂鏂囦欢</span><br></pre></td></tr></table></figure>
+<h3 id="第二梯队-★★★★☆（高优先级）"><a href="#第二梯队-★★★★☆（高优先级）" class="headerlink" title="第二梯队 ★★★★☆（高优先级）"></a>第二梯队 ★★★★☆（高优先级）</h3><h4 id="4-7-App-沙盒数据"><a href="#4-7-App-沙盒数据" class="headerlink" title="4.7 App 沙盒数据"></a>4.7 App 沙盒数据</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/var/mobile/Containers/Data/Application/&lt;UUID&gt;/</span><br><span class="line">├── Document/       应用文档</span><br><span class="line">├── Library/</span><br><span class="line">│   ├── Preferences/  偏好设置（Plist 格式）</span><br><span class="line">│   └── Caches/       缓存数据</span><br><span class="line">└── tmp/            临时文件</span><br></pre></td></tr></table></figure>
 
-<p>*<em>鍒嗘瀽瑕佺偣锛?</em></p>
+<p><strong>分析要点：</strong></p>
 <ul>
-<li>閫氳繃 <code>/var/mobile/Containers/Manifest.db</code> 鍙槧灏?UUID 鍒板簲鐢ㄥ悕绉?- 寰俊&#x2F;QQ 绛夊簲鐢ㄧ殑鍏抽敭鏁版嵁鍦?<code>Documents/</code> 鍜?<code>Library/Caches/</code> 涓?- <code>Library/Preferences/</code> 涓嬬殑 <code>.plist</code> 鏂囦欢鍖呭惈搴旂敤閰嶇疆</li>
+<li>通过 <code>/var/mobile/Containers/Manifest.db</code> 可映射 UUID 到应用名称</li>
+<li>微信&#x2F;QQ 等应用的关键数据在 <code>Documents/</code> 和 <code>Library/Caches/</code> 中</li>
+<li><code>Library/Preferences/</code> 下的 <code>.plist</code> 文件包含应用配置</li>
 </ul>
-<h4 id="4-8-绯荤粺鏃ュ織"><a href="#4-8-绯荤粺鏃ュ織" class="headerlink" title="4.8 绯荤粺鏃ュ織"></a>4.8 绯荤粺鏃ュ織</h4><table>
+<h4 id="4-8-系统日志"><a href="#4-8-系统日志" class="headerlink" title="4.8 系统日志"></a>4.8 系统日志</h4><table>
 <thead>
 <tr>
-<th>鏃ュ織</th>
-<th>璺緞</th>
-<th>璇存槑</th>
+<th>日志</th>
+<th>路径</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>syslog</td>
 <td><code>/private/var/log/syslog</code></td>
-<td>绯荤粺杩愯鏃ュ織</td>
+<td>系统运行日志</td>
 </tr>
 <tr>
-<td>crash 鎶ュ憡</td>
+<td>crash 报告</td>
 <td><code>/private/var/mobile/Library/Logs/CrashReporter/</code></td>
-<td>搴旂敤宕╂簝璁板綍</td>
+<td>应用崩溃记录</td>
 </tr>
 <tr>
-<td>璇婃柇鏁版嵁</td>
+<td>诊断数据</td>
 <td><code>/private/var/log/diagnosticLogs/</code></td>
-<td>璇婃柇鏃ュ織</td>
+<td>诊断日志</td>
 </tr>
 </tbody></table>
-<h4 id="4-9-Wi-Fi-涓庣綉缁"><a href="#4-9-Wi-Fi-涓庣綉缁" class="headerlink" title="4.9 Wi-Fi 涓庣綉缁?"></a>4.9 Wi-Fi 涓庣綉缁?</h4><table>
+<h4 id="4-9-Wi-Fi-与网络"><a href="#4-9-Wi-Fi-与网络" class="headerlink" title="4.9 Wi-Fi 与网络"></a>4.9 Wi-Fi 与网络</h4><table>
 <thead>
 <tr>
-<th>鏁版嵁</th>
-<th>璺緞</th>
-<th>璇存槑</th>
+<th>数据</th>
+<th>路径</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Wi-Fi 閰嶇疆</td>
+<td>Wi-Fi 配置</td>
 <td><code>/var/mobile/Library/Preferences/com.apple.wifi.plist</code></td>
-<td>SSID 鍒楄〃</td>
+<td>SSID 列表</td>
 </tr>
 <tr>
 <td>Bluetooth</td>
 <td><code>/var/mobile/Library/Preferences/com.apple.bluetooth.plist</code></td>
-<td>钃濈墮閰嶅璁惧</td>
+<td>蓝牙配对设备</td>
 </tr>
 <tr>
-<td>铚傜獫缃戠粶</td>
+<td>蜂窝网络</td>
 <td><code>/var/mobile/Library/Preferences/com.apple.MobileData.plist</code></td>
-<td>铚傜獫缃戠粶璁剧疆</td>
+<td>蜂窝网络设置</td>
 </tr>
 </tbody></table>
-<h4 id="4-10-浣嶇疆涓庤繍鍔"><a href="#4-10-浣嶇疆涓庤繍鍔" class="headerlink" title="4.10 浣嶇疆涓庤繍鍔?"></a>4.10 浣嶇疆涓庤繍鍔?</h4><table>
+<h4 id="4-10-位置与运动"><a href="#4-10-位置与运动" class="headerlink" title="4.10 位置与运动"></a>4.10 位置与运动</h4><table>
 <thead>
 <tr>
-<th>鏁版嵁</th>
-<th>璺緞</th>
-<th>璇存槑</th>
+<th>数据</th>
+<th>路径</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>浣嶇疆缂撳瓨</td>
+<td>位置缓存</td>
 <td><code>/var/mobile/Library/Caches/locationd/</code></td>
-<td>GPS 璁块棶璁板綍</td>
+<td>GPS 访问记录</td>
 </tr>
 <tr>
-<td>杩愬姩鏁版嵁</td>
+<td>运动数据</td>
 <td><code>/var/mobile/Library/Motion/</code></td>
-<td>杩愬姩浼犳劅鍣ㄦ暟鎹?</td>
+<td>运动传感器数据</td>
 </tr>
 </tbody></table>
-<h4 id="4-11-鍏朵粬楂樹环鍊兼暟鎹"><a href="#4-11-鍏朵粬楂樹环鍊兼暟鎹" class="headerlink" title="4.11 鍏朵粬楂樹环鍊兼暟鎹?"></a>4.11 鍏朵粬楂樹环鍊兼暟鎹?</h4><table>
+<h4 id="4-11-其他高价值数据"><a href="#4-11-其他高价值数据" class="headerlink" title="4.11 其他高价值数据"></a>4.11 其他高价值数据</h4><table>
 <thead>
 <tr>
-<th>鏁版嵁</th>
-<th>璺緞</th>
-<th>璇存槑</th>
+<th>数据</th>
+<th>路径</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>閽卞寘&#x2F;Apple Pay</td>
+<td>钱包&#x2F;Apple Pay</td>
 <td><code>/var/mobile/Library/Wallet/</code></td>
-<td>閾惰鍗′俊鎭?</td>
+<td>银行卡信息</td>
 </tr>
 <tr>
-<td>鍋ュ悍鏁版嵁</td>
+<td>健康数据</td>
 <td><code>/var/mobile/Library/Health/</code></td>
-<td>鍋ュ悍璁板綍</td>
+<td>健康记录</td>
 </tr>
 <tr>
 <td>HomeKit</td>
 <td><code>/var/mobile/Library/Home/</code></td>
-<td>鏅鸿兘瀹跺眳閰嶇疆</td>
+<td>智能家居配置</td>
 </tr>
 <tr>
-<td>蹇嵎鎸囦护</td>
+<td>快捷指令</td>
 <td><code>/var/mobile/Library/Shortcuts/</code></td>
-<td>鑷姩鍖栨寚浠?</td>
+<td>自动化指令</td>
 </tr>
 <tr>
-<td>iCloud 閰嶇疆</td>
+<td>iCloud 配置</td>
 <td><code>/var/mobile/Library/CloudConfiguration/</code></td>
-<td>iCloud 璁剧疆</td>
+<td>iCloud 设置</td>
 </tr>
 </tbody></table>
-<h3 id="绗笁姊槦-鈽呪槄鈽呪槅鈽嗭紙涓紭鍏堢骇锛"><a href="#绗笁姊槦-鈽呪槄鈽呪槅鈽嗭紙涓紭鍏堢骇锛" class="headerlink" title="绗笁姊槦 鈽呪槄鈽呪槅鈽嗭紙涓紭鍏堢骇锛?"></a>绗笁姊槦 鈽呪槄鈽呪槅鈽嗭紙涓紭鍏堢骇锛?</h3><h4 id="4-12-瓒婄嫳淇℃伅"><a href="#4-12-瓒婄嫳淇℃伅" class="headerlink" title="4.12 瓒婄嫳淇℃伅"></a>4.12 瓒婄嫳淇℃伅</h4><table>
+<h3 id="第三梯队-★★★☆☆（中优先级）"><a href="#第三梯队-★★★☆☆（中优先级）" class="headerlink" title="第三梯队 ★★★☆☆（中优先级）"></a>第三梯队 ★★★☆☆（中优先级）</h3><h4 id="4-12-越狱信息"><a href="#4-12-越狱信息" class="headerlink" title="4.12 越狱信息"></a>4.12 越狱信息</h4><table>
 <thead>
 <tr>
-<th>淇℃伅</th>
-<th>璺緞</th>
-<th>鐢ㄩ€?</th>
+<th>信息</th>
+<th>路径</th>
+<th>用途</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Cydia 宸茶杞欢</td>
+<td>Cydia 已装软件</td>
 <td><code>/var/lib/dpkg/info/*.list</code></td>
-<td>鎵€鏈夊畨瑁呯殑搴旂敤鍖?</td>
+<td>所有安装的应用包</td>
 </tr>
 <tr>
-<td>Cydia 鏁版嵁搴?</td>
+<td>Cydia 数据库</td>
 <td><code>/var/lib/cydia/</code></td>
-<td>Cydia 鍏冩暟鎹?</td>
+<td>Cydia 元数据</td>
 </tr>
 <tr>
-<td>Tweak 鎻掍欢</td>
+<td>Tweak 插件</td>
 <td><code>/Library/MobileSubstrate/DynamicLibraries/</code></td>
-<td>娉ㄥ叆鐨?Tweak</td>
+<td>注入的 Tweak</td>
 </tr>
 <tr>
-<td>MobileSubstrate 閰嶇疆</td>
+<td>MobileSubstrate 配置</td>
 <td><code>/Library/MobileSubstrate/Bootstrap/</code></td>
-<td>鎻掍欢鍚姩閰嶇疆</td>
+<td>插件启动配置</td>
 </tr>
 <tr>
-<td>SSH 閰嶇疆</td>
+<td>SSH 配置</td>
 <td><code>/private/etc/ssh/sshd_config</code></td>
-<td>SSH 杩滅▼鐧诲綍閰嶇疆</td>
+<td>SSH 远程登录配置</td>
 </tr>
 </tbody></table>
-<h4 id="4-13-绯荤粺鍋忓ソ璁剧疆"><a href="#4-13-绯荤粺鍋忓ソ璁剧疆" class="headerlink" title="4.13 绯荤粺鍋忓ソ璁剧疆"></a>4.13 绯荤粺鍋忓ソ璁剧疆</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/var/mobile/Library/Preferences/</span><br><span class="line">鈹溾攢鈹€ com.apple.springboard.plist       閿佸睆澹佺焊銆侀€氱煡璁剧疆</span><br><span class="line">鈹溾攢鈹€ com.apple.Preferences.plist         绯荤粺璁剧疆</span><br><span class="line">鈹溾攢鈹€ com.apple.mobiletimerd.plist       闂归挓璁剧疆</span><br><span class="line">鈹溾攢鈹€ com.apple.AppStore.plist           App Store 璁剧疆</span><br><span class="line">鈹斺攢鈹€ ...</span><br></pre></td></tr></table></figure>
+<h4 id="4-13-系统偏好设置"><a href="#4-13-系统偏好设置" class="headerlink" title="4.13 系统偏好设置"></a>4.13 系统偏好设置</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/var/mobile/Library/Preferences/</span><br><span class="line">├── com.apple.springboard.plist       锁屏壁纸、通知设置</span><br><span class="line">├── com.apple.Preferences.plist         系统设置</span><br><span class="line">├── com.apple.mobiletimerd.plist       闹钟设置</span><br><span class="line">├── com.apple.AppStore.plist           App Store 设置</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
 
-<h4 id="4-14-绯荤粺绾ч厤缃"><a href="#4-14-绯荤粺绾ч厤缃" class="headerlink" title="4.14 绯荤粺绾ч厤缃?"></a>4.14 绯荤粺绾ч厤缃?</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/Library/Preferences/</span><br><span class="line">鈹溾攢鈹€ .GlobalPreferences.plist            绯荤粺鍏ㄥ眬璁剧疆锛堣瑷€銆侀敭鐩樸€佹椂鍖猴級</span><br><span class="line">鈹溾攢鈹€ com.apple.timezone.auto.plist       鑷姩鏃跺尯</span><br><span class="line">鈹溾攢鈹€ com.apple.accessibility.plist        杈呭姪鍔熻兘</span><br><span class="line">鈹斺攢鈹€ ...</span><br></pre></td></tr></table></figure>
+<h4 id="4-14-系统级配置"><a href="#4-14-系统级配置" class="headerlink" title="4.14 系统级配置"></a>4.14 系统级配置</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/Library/Preferences/</span><br><span class="line">├── .GlobalPreferences.plist            系统全局设置（语言、键盘、时区）</span><br><span class="line">├── com.apple.timezone.auto.plist       自动时区</span><br><span class="line">├── com.apple.accessibility.plist        辅助功能</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
 
-<h3 id="绗洓姊槦-鈽呪槄鈽嗏槅鈽嗭紙浣庝紭鍏堢骇锛"><a href="#绗洓姊槦-鈽呪槄鈽嗏槅鈽嗭紙浣庝紭鍏堢骇锛" class="headerlink" title="绗洓姊槦 鈽呪槄鈽嗏槅鈽嗭紙浣庝紭鍏堢骇锛?"></a>绗洓姊槦 鈽呪槄鈽嗏槅鈽嗭紙浣庝紭鍏堢骇锛?</h3><table>
+<h3 id="第四梯队-★★☆☆☆（低优先级）"><a href="#第四梯队-★★☆☆☆（低优先级）" class="headerlink" title="第四梯队 ★★☆☆☆（低优先级）"></a>第四梯队 ★★☆☆☆（低优先级）</h3><table>
 <thead>
 <tr>
-<th>鐩綍</th>
-<th>璇存槑</th>
+<th>目录</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
 <td><code>/tmp/</code></td>
-<td>涓存椂鏂囦欢锛岄€氬父鏃犱繚鐣欎环鍊?</td>
+<td>临时文件，通常无保留价值</td>
 </tr>
 <tr>
 <td><code>/System/</code></td>
-<td>绯荤粺鏂囦欢锛岀敤浜庣増鏈‘璁?</td>
+<td>系统文件，用于版本确认</td>
 </tr>
 <tr>
 <td><code>/usr/</code></td>
-<td>绯荤粺宸ュ叿</td>
+<td>系统工具</td>
 </tr>
 <tr>
 <td><code>/var/cache/</code></td>
-<td>缂撳瓨鏁版嵁锛屽彲鑳藉凡琚竻鐞?</td>
+<td>缓存数据，可能已被清理</td>
 </tr>
 <tr>
 <td><code>/cores/</code></td>
-<td>鍐呮牳杞偍锛岃緝澶т絾浠峰€兼湁闄?</td>
+<td>内核转储，较大但价值有限</td>
 </tr>
 <tr>
 <td><code>/boot/</code></td>
-<td>鍚姩鏂囦欢</td>
+<td>启动文件</td>
 </tr>
 <tr>
 <td><code>/dev/</code></td>
-<td>璁惧鑺傜偣</td>
+<td>设备节点</td>
 </tr>
 </tbody></table>
 <hr>
-<h2 id="浜斻€佸父瑙-App-鏁版嵁璺緞閫熸煡"><a href="#浜斻€佸父瑙-App-鏁版嵁璺緞閫熸煡" class="headerlink" title="浜斻€佸父瑙?App 鏁版嵁璺緞閫熸煡"></a>浜斻€佸父瑙?App 鏁版嵁璺緞閫熸煡</h2><table>
+<h2 id="五、常见-App-数据路径速查"><a href="#五、常见-App-数据路径速查" class="headerlink" title="五、常见 App 数据路径速查"></a>五、常见 App 数据路径速查</h2><table>
 <thead>
 <tr>
 <th>App</th>
-<th>璺緞</th>
-<th>鏁版嵁绫诲瀷</th>
+<th>路径</th>
+<th>数据类型</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>寰俊</td>
+<td>微信</td>
 <td><code>/var/mobile/Containers/Data/Application/*/Documents/</code></td>
-<td>鑱婂ぉ鏁版嵁搴撱€佸浘鐗囥€佽闊?</td>
+<td>聊天数据库、图片、语音</td>
 </tr>
 <tr>
 <td>QQ</td>
 <td><code>/var/mobile/Library/QQ/</code></td>
-<td>鑱婂ぉ鏁版嵁搴撱€佹枃浠?</td>
+<td>聊天数据库、文件</td>
 </tr>
 <tr>
 <td>Safari</td>
 <td><code>/var/mobile/Library/Safari/</code></td>
-<td>鍘嗗彶銆佷功绛俱€佽〃鍗曟暟鎹?</td>
+<td>历史、书签、表单数据</td>
 </tr>
 <tr>
 <td>WhatsApp</td>
 <td><code>/var/mobile/Containers/Shared/AppGroup/*/WhatsApp/</code></td>
-<td>鑱婂ぉ鏁版嵁搴撱€佸獟浣?</td>
+<td>聊天数据库、媒体</td>
 </tr>
 <tr>
 <td>Telegram</td>
 <td><code>/var/mobile/Containers/Data/Application/*/Documents/</code></td>
-<td>鑱婂ぉ鏁版嵁搴?</td>
+<td>聊天数据库</td>
 </tr>
 <tr>
-<td>寰崥</td>
+<td>微博</td>
 <td><code>/var/mobile/Containers/Data/Application/*/Documents/</code></td>
-<td>缂撳瓨銆佹暟鎹簱</td>
+<td>缓存、数据库</td>
 </tr>
 <tr>
-<td>鐭ヤ箮</td>
+<td>知乎</td>
 <td><code>/var/mobile/Containers/Data/Application/*/Documents/</code></td>
-<td>缂撳瓨銆佹暟鎹簱</td>
+<td>缓存、数据库</td>
 </tr>
 <tr>
-<td>鏀粯瀹?</td>
+<td>支付宝</td>
 <td><code>/var/mobile/Containers/Data/Application/*/Documents/</code></td>
-<td>浜ゆ槗璁板綍鏁版嵁搴?</td>
+<td>交易记录数据库</td>
 </tr>
 <tr>
-<td>鎶栭煶</td>
+<td>抖音</td>
 <td><code>/var/mobile/Containers/Data/Application/*/Documents/</code></td>
-<td>缂撳瓨銆佹暟鎹簱</td>
+<td>缓存、数据库</td>
 </tr>
 <tr>
-<td>鐧惧害鍦板浘</td>
+<td>百度地图</td>
 <td><code>/var/mobile/Containers/Data/Application/*/Library/Caches/</code></td>
-<td>浣嶇疆鍘嗗彶</td>
+<td>位置历史</td>
 </tr>
 <tr>
 <td>FaceTime</td>
 <td><code>/var/mobile/Library/FaceTime/</code></td>
-<td>閫氳瘽璁板綍</td>
+<td>通话记录</td>
 </tr>
 <tr>
-<td>閭欢</td>
+<td>邮件</td>
 <td><code>/var/mobile/Mail/</code></td>
-<td>閭欢鏁版嵁搴?</td>
+<td>邮件数据库</td>
 </tr>
 <tr>
 <td>Apple Pay</td>
 <td><code>/var/mobile/Library/Wallet/</code></td>
-<td>閾惰鍗°€佷氦鏄?</td>
+<td>银行卡、交易</td>
 </tr>
 <tr>
-<td>璇煶澶囧繕褰?</td>
+<td>语音备忘录</td>
 <td><code>/var/mobile/Library/VoiceMemos/</code></td>
-<td>褰曢煶鏂囦欢</td>
+<td>录音文件</td>
 </tr>
 <tr>
-<td>蹇嵎鎸囦护</td>
+<td>快捷指令</td>
 <td><code>/var/mobile/Library/Shortcuts/</code></td>
-<td>鑷姩鍖栬剼鏈?</td>
+<td>自动化脚本</td>
 </tr>
 </tbody></table>
 <blockquote>
-<p>娉ㄦ剰锛氳矾寰勪腑鐨?<code>*</code> 闇€瑕佺粨鍚?<code>Manifest.db</code> 鏇挎崲涓哄疄闄呯殑 UUID銆備笉鍚?iOS 鐗堟湰璺緞鍙兘鏈夊樊寮傘€?</p>
+<p>注意：路径中的 <code>*</code> 需要结合 <code>Manifest.db</code> 替换为实际的 UUID。不同 iOS 版本路径可能有差异。</p>
 </blockquote>
 <hr>
-<h2 id="鍏€佸彇璇佸垎鏋愬伐鍏锋帹鑽"><a href="#鍏€佸彇璇佸垎鏋愬伐鍏锋帹鑽" class="headerlink" title="鍏€佸彇璇佸垎鏋愬伐鍏锋帹鑽?"></a>鍏€佸彇璇佸垎鏋愬伐鍏锋帹鑽?</h2><h3 id="6-1-鏁版嵁搴撳垎鏋"><a href="#6-1-鏁版嵁搴撳垎鏋" class="headerlink" title="6.1 鏁版嵁搴撳垎鏋?"></a>6.1 鏁版嵁搴撳垎鏋?</h3><table>
+<h2 id="六、取证分析工具推荐"><a href="#六、取证分析工具推荐" class="headerlink" title="六、取证分析工具推荐"></a>六、取证分析工具推荐</h2><h3 id="6-1-数据库分析"><a href="#6-1-数据库分析" class="headerlink" title="6.1 数据库分析"></a>6.1 数据库分析</h3><table>
 <thead>
 <tr>
-<th>宸ュ叿</th>
-<th>鐢ㄩ€?</th>
+<th>工具</th>
+<th>用途</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>DB Browser for SQLite</td>
-<td>寮€婧?SQLite 鏁版嵁搴撴煡鐪嬪櫒</td>
+<td>开源 SQLite 数据库查看器</td>
 </tr>
 <tr>
 <td>SQLPro</td>
-<td>macOS 涓婄殑 SQLite 瀹㈡埛绔?</td>
+<td>macOS 上的 SQLite 客户端</td>
 </tr>
 <tr>
 <td>DBeaver</td>
-<td>閫氱敤鏁版嵁搴撶鐞嗗伐鍏?</td>
+<td>通用数据库管理工具</td>
 </tr>
 <tr>
-<td>鑷畾涔?Python 鑴氭湰</td>
-<td>鎵归噺瀵煎嚭鍜屽垎鏋愭暟鎹簱璁板綍</td>
+<td>自定义 Python 脚本</td>
+<td>批量导出和分析数据库记录</td>
 </tr>
 </tbody></table>
-<h3 id="6-2-鏂囦欢绯荤粺鍒嗘瀽"><a href="#6-2-鏂囦欢绯荤粺鍒嗘瀽" class="headerlink" title="6.2 鏂囦欢绯荤粺鍒嗘瀽"></a>6.2 鏂囦欢绯荤粺鍒嗘瀽</h3><table>
+<h3 id="6-2-文件系统分析"><a href="#6-2-文件系统分析" class="headerlink" title="6.2 文件系统分析"></a>6.2 文件系统分析</h3><table>
 <thead>
 <tr>
-<th>宸ュ叿</th>
-<th>鐢ㄩ€?</th>
+<th>工具</th>
+<th>用途</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>iMazing</td>
-<td>iOS 鏁版嵁鎻愬彇鍜岀鐞?</td>
+<td>iOS 数据提取和管理</td>
 </tr>
 <tr>
 <td>Elcomsoft Phone Breaker</td>
-<td>iOS 鍙栬瘉鏁版嵁鎻愬彇</td>
+<td>iOS 取证数据提取</td>
 </tr>
 <tr>
 <td>XRY&#x2F;XWE</td>
-<td>涓撲笟鍙栬瘉鏁版嵁鎻愬彇</td>
+<td>专业取证数据提取</td>
 </tr>
 <tr>
 <td>Magnet AXIOM</td>
-<td>缁煎悎鏁板瓧鍙栬瘉骞冲彴</td>
+<td>综合数字取证平台</td>
 </tr>
 <tr>
 <td>Autopsy</td>
-<td>寮€婧愮鐩樺彇璇佸垎鏋?</td>
+<td>开源磁盘取证分析</td>
 </tr>
 <tr>
 <td>FTK Imager</td>
-<td>纾佺洏闀滃儚鍒涘缓涓庡垎鏋?</td>
+<td>磁盘镜像创建与分析</td>
 </tr>
 <tr>
 <td>EnCase</td>
-<td>涓撲笟鍙栬瘉骞冲彴</td>
+<td>专业取证平台</td>
 </tr>
 </tbody></table>
-<h3 id="6-3-鏁版嵁鎭㈠"><a href="#6-3-鏁版嵁鎭㈠" class="headerlink" title="6.3 鏁版嵁鎭㈠"></a>6.3 鏁版嵁鎭㈠</h3><table>
+<h3 id="6-3-数据恢复"><a href="#6-3-数据恢复" class="headerlink" title="6.3 数据恢复"></a>6.3 数据恢复</h3><table>
 <thead>
 <tr>
-<th>宸ュ叿</th>
-<th>鐢ㄩ€?</th>
+<th>工具</th>
+<th>用途</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>PhotoRec</td>
-<td>鏂囦欢鎭㈠锛堢収鐗囥€佹枃妗ｇ瓑锛?</td>
+<td>文件恢复（照片、文档等）</td>
 </tr>
 <tr>
 <td>TestDisk</td>
-<td>鍒嗗尯鎭㈠</td>
+<td>分区恢复</td>
 </tr>
 <tr>
 <td>dbrecover</td>
-<td>SQLite 鏁版嵁搴撴仮澶?</td>
+<td>SQLite 数据库恢复</td>
 </tr>
 <tr>
 <td>ddrescue</td>
-<td>纾佺洏闀滃儚鍏嬮殕</td>
+<td>磁盘镜像克隆</td>
 </tr>
 </tbody></table>
 <hr>
-<h2 id="涓冦€佸彇璇佹敞鎰忎簨椤"><a href="#涓冦€佸彇璇佹敞鎰忎簨椤" class="headerlink" title="涓冦€佸彇璇佹敞鎰忎簨椤?"></a>涓冦€佸彇璇佹敞鎰忎簨椤?</h2><h3 id="7-1-瓒婄嫳鍒ゅ畾渚濇嵁"><a href="#7-1-瓒婄嫳鍒ゅ畾渚濇嵁" class="headerlink" title="7.1 瓒婄嫳鍒ゅ畾渚濇嵁"></a>7.1 瓒婄嫳鍒ゅ畾渚濇嵁</h3><table>
+<h2 id="七、取证注意事项"><a href="#七、取证注意事项" class="headerlink" title="七、取证注意事项"></a>七、取证注意事项</h2><h3 id="7-1-越狱判定依据"><a href="#7-1-越狱判定依据" class="headerlink" title="7.1 越狱判定依据"></a>7.1 越狱判定依据</h3><table>
 <thead>
 <tr>
-<th>渚濇嵁</th>
-<th>璺緞&#x2F;鏂囦欢</th>
+<th>依据</th>
+<th>路径&#x2F;文件</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Cydia 搴旂敤鍟嗗簵</td>
+<td>Cydia 应用商店</td>
 <td><code>/Applications/Cydia.app</code></td>
 </tr>
 <tr>
-<td>MobileSubstrate 妗嗘灦</td>
+<td>MobileSubstrate 框架</td>
 <td><code>/Library/MobileSubstrate/</code></td>
 </tr>
 <tr>
-<td>Cydia 鏁版嵁</td>
-<td><code>/var/lib/cydia/</code>銆乣&#x2F;var&#x2F;lib&#x2F;apt&#x2F;&#96;</td>
+<td>Cydia 数据</td>
+<td><code>/var/lib/cydia/</code>、<code>/var/lib/apt/</code></td>
 </tr>
 <tr>
-<td>瓒婄嫳鏍囪鏂囦欢</td>
-<td><code>.cydia_no_stash</code>銆乣.installed_home depot&#96;</td>
+<td>越狱标记文件</td>
+<td><code>.cydia_no_stash</code>、<code>.installed_home depot</code></td>
 </tr>
 <tr>
-<td>瓒婄嫳 App 鐩綍</td>
-<td><code>/Applications/</code> 涓嬫湁闈炴爣鍑?App</td>
+<td>越狱 App 目录</td>
+<td><code>/Applications/</code> 下有非标准 App</td>
 </tr>
 </tbody></table>
-<h3 id="7-2-鏃堕棿绾垮垎鏋"><a href="#7-2-鏃堕棿绾垮垎鏋" class="headerlink" title="7.2 鏃堕棿绾垮垎鏋?"></a>7.2 鏃堕棿绾垮垎鏋?</h3><p>iOS 鏃堕棿鎴充娇鐢?<strong>Core Foundation Date</strong>锛氫粠 2001-01-01 00:00:00 UTC 寮€濮嬬殑绉掓暟銆?</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">ios_timestamp_to_dt</span>(<span class="params">ts</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;灏?iOS Core Foundation Date 杞崲涓?datetime&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> datetime.datetime(<span class="number">2001</span>, <span class="number">1</span>, <span class="number">1</span>) + datetime.timedelta(seconds=ts)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绀轰緥</span></span><br><span class="line">ts = <span class="number">676278901.234</span></span><br><span class="line">dt = ios_timestamp_to_dt(ts)</span><br><span class="line"><span class="built_in">print</span>(dt)  <span class="comment"># 杈撳嚭锛?026-05-28 10:30:01</span></span><br></pre></td></tr></table></figure>
+<h3 id="7-2-时间线分析"><a href="#7-2-时间线分析" class="headerlink" title="7.2 时间线分析"></a>7.2 时间线分析</h3><p>iOS 时间戳使用 <strong>Core Foundation Date</strong>：从 2001-01-01 00:00:00 UTC 开始的秒数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">ios_timestamp_to_dt</span>(<span class="params">ts</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;将 iOS Core Foundation Date 转换为 datetime&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> datetime.datetime(<span class="number">2001</span>, <span class="number">1</span>, <span class="number">1</span>) + datetime.timedelta(seconds=ts)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例</span></span><br><span class="line">ts = <span class="number">676278901.234</span></span><br><span class="line">dt = ios_timestamp_to_dt(ts)</span><br><span class="line"><span class="built_in">print</span>(dt)  <span class="comment"># 输出：2026-05-28 10:30:01</span></span><br></pre></td></tr></table></figure>
 
-<p><em><em>娉ㄦ剰锛?</em> iMessage 鍜屾煇浜涘簲鐢ㄤ娇鐢?*鑻规灉鍘嗕功鏃堕棿锛圓pple Reference Date锛?*锛屼粠 2001-01-01 寮€濮嬬殑**绾崇</em>*锛岄渶瑕侀櫎浠?10^9銆?</p>
-<h3 id="7-3-鏁版嵁淇濇姢涓庡畬鏁存€"><a href="#7-3-鏁版嵁淇濇姢涓庡畬鏁存€" class="headerlink" title="7.3 鏁版嵁淇濇姢涓庡畬鏁存€?"></a>7.3 鏁版嵁淇濇姢涓庡畬鏁存€?</h3><ol>
-<li><strong>鍝堝笇鏍￠獙</strong>锛氭彁鍙栨暟鎹悗绔嬪嵆璁＄畻 SHA-256&#x2F;MD5 鍝堝笇鍊?2. <strong>鍙鎿嶄綔</strong>锛氬彇璇佽繃绋嬩腑纭繚鍙妯″紡锛岄伩鍏嶄慨鏀瑰師濮嬫暟鎹?3. <strong>闀滃儚澶囦唤</strong>锛氫紭鍏堣幏鍙栧畬鏁寸鐩橀暅鍍忥紙<code>dd</code> 鎴栦笓涓氬伐鍏凤級</li>
-<li><strong>鍙栬瘉鎶ュ憡</strong>锛氳褰曟墍鏈夋彁鍙栫殑鏂囦欢璺緞銆佸搱甯屽€笺€佹彁鍙栨椂闂?</li>
+<p><strong>注意：</strong> iMessage 和某些应用使用<strong>苹果历书时间（Apple Reference Date）</strong>，从 2001-01-01 开始的<strong>纳秒</strong>，需要除以 10^9。</p>
+<h3 id="7-3-数据保护与完整性"><a href="#7-3-数据保护与完整性" class="headerlink" title="7.3 数据保护与完整性"></a>7.3 数据保护与完整性</h3><ol>
+<li><strong>哈希校验</strong>：提取数据后立即计算 SHA-256&#x2F;MD5 哈希值</li>
+<li><strong>只读操作</strong>：取证过程中确保只读模式，避免修改原始数据</li>
+<li><strong>镜像备份</strong>：优先获取完整磁盘镜像（<code>dd</code> 或专业工具）</li>
+<li><strong>取证报告</strong>：记录所有提取的文件路径、哈希值、提取时间</li>
 </ol>
-<h3 id="7-4-鍔犲瘑鏁版嵁"><a href="#7-4-鍔犲瘑鏁版嵁" class="headerlink" title="7.4 鍔犲瘑鏁版嵁"></a>7.4 鍔犲瘑鏁版嵁</h3><ul>
-<li>iOS 11+ 璁惧鏂囦欢绯荤粺榛樿鍔犲瘑</li>
-<li>闇€瑕佹彁鍙?<strong>UID</strong> 鍜?<strong>瀵嗛挜閾句富瀵嗛挜</strong> 鎵嶈兘瑙ｅ瘑</li>
-<li>瀹屾暣鍙栬瘉閫氬父闇€瑕佽澶囪В閿佺姸鎬?- Keychain 鏁版嵁鍗充娇瑙ｅ瘑鏂囦欢绯荤粺涔熸棤娉曠洿鎺ヨ鍙?</li>
+<h3 id="7-4-加密数据"><a href="#7-4-加密数据" class="headerlink" title="7.4 加密数据"></a>7.4 加密数据</h3><ul>
+<li>iOS 11+ 设备文件系统默认加密</li>
+<li>需要提取 <strong>UID</strong> 和 <strong>密钥链主密钥</strong> 才能解密</li>
+<li>完整取证通常需要设备解锁状态</li>
+<li>Keychain 数据即使解密文件系统也无法直接读取</li>
 </ul>
-<h3 id="7-5-甯歌鏁版嵁鍒犻櫎涓庢仮澶"><a href="#7-5-甯歌鏁版嵁鍒犻櫎涓庢仮澶" class="headerlink" title="7.5 甯歌鏁版嵁鍒犻櫎涓庢仮澶?"></a>7.5 甯歌鏁版嵁鍒犻櫎涓庢仮澶?</h3><ul>
-<li>SQLite 鏁版嵁搴撳垹闄ゅ悗锛岃嫢椤甸潰鏈瑕嗗啓锛屽彲浣跨敤 <code>sqlite3</code> 鐨?<code>.recover</code> 鍛戒护鎭㈠</li>
-<li>鐓х墖鍒犻櫎鍚庯紝<code>PhotoData.sqlite</code> 鍜?<code>PhotosImports.plist</code> 鍙兘浠嶄繚鐣欏垹闄よ褰?- 娴忚鍣ㄥ巻鍙茶褰曞湪缂撳瓨鏂囦欢涓彲鑳戒繚鐣欐畫鐗?- <code>.bash_history</code> 涓殑鍛戒护鍒犻櫎鍚庯紝鍙€氳繃纾佺洏鎵弿鎭㈠</li>
+<h3 id="7-5-常见数据删除与恢复"><a href="#7-5-常见数据删除与恢复" class="headerlink" title="7.5 常见数据删除与恢复"></a>7.5 常见数据删除与恢复</h3><ul>
+<li>SQLite 数据库删除后，若页面未被覆写，可使用 <code>sqlite3</code> 的 <code>.recover</code> 命令恢复</li>
+<li>照片删除后，<code>PhotoData.sqlite</code> 和 <code>PhotosImports.plist</code> 可能仍保留删除记录</li>
+<li>浏览器历史记录在缓存文件中可能保留残片</li>
+<li><code>.bash_history</code> 中的命令删除后，可通过磁盘扫描恢复</li>
 </ul>
-<h3 id="7-6-鏂囦欢鏉冮檺涓庢墍鏈夎€"><a href="#7-6-鏂囦欢鏉冮檺涓庢墍鏈夎€" class="headerlink" title="7.6 鏂囦欢鏉冮檺涓庢墍鏈夎€?"></a>7.6 鏂囦欢鏉冮檺涓庢墍鏈夎€?</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r--  1 mobile  mobile   12345 Jun 15 10:30 sms.db</span><br><span class="line">drwxr-xr-x  1 root    wheel      4096 Jun 15 10:30 Library/</span><br></pre></td></tr></table></figure>
+<h3 id="7-6-文件权限与所有者"><a href="#7-6-文件权限与所有者" class="headerlink" title="7.6 文件权限与所有者"></a>7.6 文件权限与所有者</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r--  1 mobile  mobile   12345 Jun 15 10:30 sms.db</span><br><span class="line">drwxr-xr-x  1 root    wheel      4096 Jun 15 10:30 Library/</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>iOS 鏂囦欢鏉冮檺閬靛惊 Unix 浼犵粺</li>
-<li>鏅€氱敤鎴锋枃浠舵墍鏈夎€呬负 <code>mobile</code>锛岀郴缁熸枃浠朵负 <code>root</code></li>
-<li>瓒婄嫳鍚庡彲璇诲彇鎵€鏈夋枃浠讹紙鍖呮嫭鍙椾繚鎶ょ殑鐩綍锛?</li>
+<li>iOS 文件权限遵循 Unix 传统</li>
+<li>普通用户文件所有者为 <code>mobile</code>，系统文件为 <code>root</code></li>
+<li>越狱后可读取所有文件（包括受保护的目录）</li>
 </ul>
 <hr>
-<h2 id="鍏€佸彇璇佹祦绋嬪缓璁"><a href="#鍏€佸彇璇佹祦绋嬪缓璁" class="headerlink" title="鍏€佸彇璇佹祦绋嬪缓璁?"></a>鍏€佸彇璇佹祦绋嬪缓璁?</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1. 璁惧闀滃儚锛坉d / 涓撲笟鍙栬瘉宸ュ叿锛?       鈫?2. 鍝堝笇鏍￠獙锛圫HA-256锛夆€?纭繚璇佹嵁瀹屾暣鎬?       鈫?3. 鏂囦欢绯荤粺鎸傝浇涓庡垎鏋?       鈫?4. 瓒婄嫳鍒ゅ畾 鈥?妫€鏌?Cydia銆丮obileSubstrate銆佽秺鐙辨爣璁版枃浠?       鈫?5. 楂樹环鍊肩洰褰曚紭鍏堟彁鍙?   鈹溾攢鈹€ 閫氳璁板綍锛圫MS/WhatsApp/寰俊锛?   鈹溾攢鈹€ 娴忚鍣ㄥ巻鍙诧紙Safari/Chrome锛?   鈹溾攢鈹€ 閫氳褰曘€佹棩鍘嗐€佸蹇樺綍</span><br><span class="line">   鈹溾攢鈹€ 鐓х墖涓庤棰戯紙DCIM/PhotoData锛?   鈹溾攢鈹€ 瀵嗛挜閾撅紙Keychain锛?   鈹斺攢鈹€ 瓒婄嫳鍛戒护鍘嗗彶锛?bash_history锛?       鈫?6. App 娌欑洅鏁版嵁鎻愬彇</span><br><span class="line">   鈹溾攢鈹€ 閫氳繃 Manifest.db 鏄犲皠 UUID</span><br><span class="line">   鈹溾攢鈹€ 瑙ｆ瀽鍋忓ソ璁剧疆锛圥list锛?   鈹斺攢鈹€ 鎻愬彇缂撳瓨鏁版嵁</span><br><span class="line">       鈫?7. 绯荤粺閰嶇疆鍒嗘瀽</span><br><span class="line">   鈹溾攢鈹€ Wi-Fi 鍘嗗彶锛圫SID 鍒楄〃锛?   鈹溾攢鈹€ Bluetooth 閰嶅璁惧</span><br><span class="line">   鈹溾攢鈹€ SSH 閰嶇疆锛堟槸鍚﹀紑鍚繙绋嬬櫥褰曪級</span><br><span class="line">   鈹斺攢鈹€ 绯荤粺鏃ュ織</span><br><span class="line">       鈫?8. 鏁版嵁搴撹В鏋愪笌鍐呭鎻愬彇</span><br><span class="line">       鈫?9. 鏃堕棿绾块噸寤?       鈫?10. 鐢熸垚鍙栬瘉鎶ュ憡</span><br></pre></td></tr></table></figure>
+<h2 id="八、取证流程建议"><a href="#八、取证流程建议" class="headerlink" title="八、取证流程建议"></a>八、取证流程建议</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">1. 设备镜像（dd / 专业取证工具）</span><br><span class="line">       ↓</span><br><span class="line">2. 哈希校验（SHA-256）— 确保证据完整性</span><br><span class="line">       ↓</span><br><span class="line">3. 文件系统挂载与分析</span><br><span class="line">       ↓</span><br><span class="line">4. 越狱判定 — 检查 Cydia、MobileSubstrate、越狱标记文件</span><br><span class="line">       ↓</span><br><span class="line">5. 高价值目录优先提取</span><br><span class="line">   ├── 通讯记录（SMS/WhatsApp/微信）</span><br><span class="line">   ├── 浏览器历史（Safari/Chrome）</span><br><span class="line">   ├── 通讯录、日历、备忘录</span><br><span class="line">   ├── 照片与视频（DCIM/PhotoData）</span><br><span class="line">   ├── 密钥链（Keychain）</span><br><span class="line">   └── 越狱命令历史（.bash_history）</span><br><span class="line">       ↓</span><br><span class="line">6. App 沙盒数据提取</span><br><span class="line">   ├── 通过 Manifest.db 映射 UUID</span><br><span class="line">   ├── 解析偏好设置（Plist）</span><br><span class="line">   └── 提取缓存数据</span><br><span class="line">       ↓</span><br><span class="line">7. 系统配置分析</span><br><span class="line">   ├── Wi-Fi 历史（SSID 列表）</span><br><span class="line">   ├── Bluetooth 配对设备</span><br><span class="line">   ├── SSH 配置（是否开启远程登录）</span><br><span class="line">   └── 系统日志</span><br><span class="line">       ↓</span><br><span class="line">8. 数据库解析与内容提取</span><br><span class="line">       ↓</span><br><span class="line">9. 时间线重建</span><br><span class="line">       ↓</span><br><span class="line">10. 生成取证报告</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h2 id="涔濄€侀檮褰曪細鍏抽敭鏂囦欢閫熸煡琛"><a href="#涔濄€侀檮褰曪細鍏抽敭鏂囦欢閫熸煡琛" class="headerlink" title="涔濄€侀檮褰曪細鍏抽敭鏂囦欢閫熸煡琛?"></a>涔濄€侀檮褰曪細鍏抽敭鏂囦欢閫熸煡琛?</h2><table>
+<h2 id="九、附录：关键文件速查表"><a href="#九、附录：关键文件速查表" class="headerlink" title="九、附录：关键文件速查表"></a>九、附录：关键文件速查表</h2><table>
 <thead>
 <tr>
-<th>鏁版嵁</th>
-<th>瀹屾暣璺緞</th>
-<th>鏍煎紡</th>
-<th>浼樺厛绾?</th>
+<th>数据</th>
+<th>完整路径</th>
+<th>格式</th>
+<th>优先级</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>SMS 鏁版嵁搴?</td>
+<td>SMS 数据库</td>
 <td><code>/private/var/mobile/Library/SMS/sms.db</code></td>
 <td>SQLite</td>
-<td>鈽呪槄鈽呪槄鈽?</td>
+<td>★★★★★</td>
 </tr>
 <tr>
-<td>iMessage 鏁版嵁搴?</td>
+<td>iMessage 数据库</td>
 <td><code>/private/var/mobile/Library/SMS/imessage.db</code></td>
 <td>SQLite</td>
-<td>鈽呪槄鈽呪槄鈽?</td>
+<td>★★★★★</td>
 </tr>
 <tr>
 <td>Safari History</td>
 <td><code>/private/var/mobile/Library/Safari/History.db</code></td>
 <td>SQLite</td>
-<td>鈽呪槄鈽呪槄鈽?</td>
+<td>★★★★★</td>
 </tr>
 <tr>
 <td>Safari Bookmarks</td>
 <td><code>/private/var/mobile/Library/Safari/Bookmarks.plist</code></td>
 <td>Plist</td>
-<td>鈽呪槄鈽呪槄鈽?</td>
+<td>★★★★★</td>
 </tr>
 <tr>
 <td>AddressBook</td>
 <td><code>/private/var/mobile/Library/AddressBook/AddressBook.sqlitedb</code></td>
 <td>SQLite</td>
-<td>鈽呪槄鈽呪槄鈽?</td>
+<td>★★★★★</td>
 </tr>
 <tr>
 <td>Calendar</td>
 <td><code>/private/var/mobile/Library/Calendar/Calendar.sqlitedb</code></td>
 <td>SQLite</td>
-<td>鈽呪槄鈽呪槄鈽?</td>
+<td>★★★★★</td>
 </tr>
 <tr>
 <td>Keychain</td>
 <td><code>/private/var/mobile/Library/Keychain/keydb.sqlitedb</code></td>
-<td>SQLite (鍔犲瘑)</td>
-<td>鈽呪槄鈽呪槄鈽?</td>
+<td>SQLite (加密)</td>
+<td>★★★★★</td>
 </tr>
 <tr>
-<td>閫氳瘽璁板綍</td>
+<td>通话记录</td>
 <td><code>/private/var/mobile/Library/CallHistoryDB/callhistory.db</code></td>
 <td>SQLite</td>
-<td>鈽呪槄鈽呪槄</td>
+<td>★★★★</td>
 </tr>
 <tr>
 <td>FaceTime</td>
 <td><code>/private/var/mobile/Library/FaceTime/</code></td>
 <td>SQLite</td>
-<td>鈽呪槄鈽呪槄</td>
+<td>★★★★</td>
 </tr>
 <tr>
 <td>WhatsApp</td>
 <td><code>/private/var/mobile/Containers/Shared/AppGroup/*/WhatsApp/</code></td>
 <td>SQLite</td>
-<td>鈽呪槄鈽呪槄鈽?</td>
+<td>★★★★★</td>
 </tr>
 <tr>
-<td>澶囧繕褰?</td>
+<td>备忘录</td>
 <td><code>/private/var/mobile/Library/Notes/Notes.sqlitedb</code></td>
 <td>SQLite</td>
-<td>鈽呪槄鈽呪槄</td>
+<td>★★★★</td>
 </tr>
 <tr>
-<td>璇煶澶囧繕褰?</td>
+<td>语音备忘录</td>
 <td><code>/private/var/mobile/Library/VoiceMemos/</code></td>
-<td>AMR 闊抽</td>
-<td>鈽呪槄鈽呪槄</td>
+<td>AMR 音频</td>
+<td>★★★★</td>
 </tr>
 <tr>
-<td>鐓х墖鏁版嵁搴?</td>
+<td>照片数据库</td>
 <td><code>/private/var/mobile/Media/PhotoData/PhotoData.sqlite</code></td>
 <td>SQLite</td>
-<td>鈽呪槄鈽呪槄鈽?</td>
+<td>★★★★★</td>
 </tr>
 <tr>
-<td>DCIM 鐓х墖</td>
+<td>DCIM 照片</td>
 <td><code>/private/var/mobile/Media/DCIM/</code></td>
 <td>JPG&#x2F;MOV</td>
-<td>鈽呪槄鈽呪槄鈽?</td>
+<td>★★★★★</td>
 </tr>
 <tr>
-<td>Wi-Fi 閰嶇疆</td>
+<td>Wi-Fi 配置</td>
 <td><code>/private/var/mobile/Library/Preferences/com.apple.wifi.plist</code></td>
 <td>Plist</td>
-<td>鈽呪槄鈽呪槄</td>
+<td>★★★★</td>
 </tr>
 <tr>
-<td>鍏ㄥ眬鍋忓ソ</td>
+<td>全局偏好</td>
 <td><code>/Library/Preferences/.GlobalPreferences.plist</code></td>
 <td>Plist</td>
-<td>鈽呪槄鈽?</td>
+<td>★★★</td>
 </tr>
 <tr>
-<td>SSH 閰嶇疆</td>
+<td>SSH 配置</td>
 <td><code>/private/etc/ssh/sshd_config</code></td>
-<td>鏂囨湰</td>
-<td>鈽呪槄鈽呪槄</td>
+<td>文本</td>
+<td>★★★★</td>
 </tr>
 <tr>
-<td>Bash 鍘嗗彶</td>
+<td>Bash 历史</td>
 <td><code>/private/var/root/.bash_history</code></td>
-<td>鏂囨湰</td>
-<td>鈽呪槄鈽呪槄</td>
+<td>文本</td>
+<td>★★★★</td>
 </tr>
 <tr>
-<td>SSH 瀵嗛挜</td>
+<td>SSH 密钥</td>
 <td><code>/private/var/root/.ssh/id_rsa</code></td>
-<td>RSA 绉侀挜</td>
-<td>鈽呪槄鈽呪槄</td>
+<td>RSA 私钥</td>
+<td>★★★★</td>
 </tr>
 <tr>
-<td>Cydia 璁板綍</td>
+<td>Cydia 记录</td>
 <td><code>/private/var/lib/cydia/</code></td>
-<td>澶氱</td>
-<td>鈽呪槄鈽呪槄</td>
+<td>多种</td>
+<td>★★★★</td>
 </tr>
 <tr>
-<td>Tweak 鍒楄〃</td>
+<td>Tweak 列表</td>
 <td><code>/Library/MobileSubstrate/DynamicLibraries/</code></td>
 <td>.dylib</td>
-<td>鈽呪槄鈽呪槄</td>
+<td>★★★★</td>
 </tr>
 <tr>
-<td>App 娌欑洅绱㈠紩</td>
+<td>App 沙盒索引</td>
 <td><code>/private/var/mobile/Containers/Manifest.db</code></td>
 <td>SQLite</td>
-<td>鈽呪槄鈽呪槄</td>
+<td>★★★★</td>
 </tr>
 <tr>
-<td>绯荤粺鏃ュ織</td>
+<td>系统日志</td>
 <td><code>/private/var/log/syslog</code></td>
-<td>鏂囨湰</td>
-<td>鈽呪槄鈽?</td>
+<td>文本</td>
+<td>★★★</td>
 </tr>
 <tr>
-<td>宕╂簝鎶ュ憡</td>
+<td>崩溃报告</td>
 <td><code>/private/var/mobile/Library/Logs/CrashReporter/</code></td>
-<td>鏂囨湰</td>
-<td>鈽呪槄鈽?</td>
+<td>文本</td>
+<td>★★★</td>
 </tr>
 <tr>
-<td>浣嶇疆缂撳瓨</td>
+<td>位置缓存</td>
 <td><code>/private/var/mobile/Library/Caches/locationd/</code></td>
-<td>澶氱</td>
-<td>鈽呪槄鈽?</td>
+<td>多种</td>
+<td>★★★</td>
 </tr>
 <tr>
 <td>Bluetooth</td>
 <td><code>/private/var/mobile/Library/Preferences/com.apple.bluetooth.plist</code></td>
 <td>Plist</td>
-<td>鈽呪槄鈽?</td>
+<td>★★★</td>
 </tr>
 <tr>
 <td>SpringBoard</td>
 <td><code>/private/var/mobile/Library/Preferences/com.apple.springboard.plist</code></td>
 <td>Plist</td>
-<td>鈽呪槄鈽?</td>
+<td>★★★</td>
 </tr>
 <tr>
-<td>鍋ュ悍鏁版嵁</td>
+<td>健康数据</td>
 <td><code>/private/var/mobile/Library/Health/</code></td>
-<td>SQLite (鍔犲瘑)</td>
-<td>鈽呪槄鈽?</td>
+<td>SQLite (加密)</td>
+<td>★★★</td>
 </tr>
 <tr>
 <td>Apple Pay</td>
 <td><code>/private/var/mobile/Library/Wallet/</code></td>
-<td>SQLite (鍔犲瘑)</td>
-<td>鈽呪槄鈽呪槄</td>
+<td>SQLite (加密)</td>
+<td>★★★★</td>
 </tr>
 <tr>
-<td>蹇嵎鎸囦护</td>
+<td>快捷指令</td>
 <td><code>/private/var/mobile/Library/Shortcuts/</code></td>
-<td>澶氱</td>
-<td>鈽呪槄鈽?</td>
+<td>多种</td>
+<td>★★★</td>
 </tr>
 <tr>
-<td>閭欢</td>
+<td>邮件</td>
 <td><code>/private/var/Mail/</code></td>
 <td>Maildata</td>
-<td>鈽呪槄鈽?</td>
+<td>★★★</td>
 </tr>
 </tbody></table>
 <hr>
-<h2 id="鍗併€乮OS-鐩綍涓-Windows-瀵瑰簲鍏崇郴锛堝府鍔╃悊瑙o級"><a href="#鍗併€乮OS-鐩綍涓-Windows-瀵瑰簲鍏崇郴锛堝府鍔╃悊瑙o級" class="headerlink" title="鍗併€乮OS 鐩綍涓?Windows 瀵瑰簲鍏崇郴锛堝府鍔╃悊瑙ｏ級"></a>鍗併€乮OS 鐩綍涓?Windows 瀵瑰簲鍏崇郴锛堝府鍔╃悊瑙ｏ級</h2><table>
+<h2 id="十、iOS-目录与-Windows-对应关系（帮助理解）"><a href="#十、iOS-目录与-Windows-对应关系（帮助理解）" class="headerlink" title="十、iOS 目录与 Windows 对应关系（帮助理解）"></a>十、iOS 目录与 Windows 对应关系（帮助理解）</h2><table>
 <thead>
 <tr>
-<th>iOS 鐩綍</th>
-<th>Windows 瀵瑰簲</th>
-<th>macOS 瀵瑰簲</th>
-<th>鐢ㄩ€?</th>
+<th>iOS 目录</th>
+<th>Windows 对应</th>
+<th>macOS 对应</th>
+<th>用途</th>
 </tr>
 </thead>
 <tbody><tr>
 <td><code>/System/</code></td>
 <td><code>C:\Windows\System32</code></td>
 <td><code>/System</code></td>
-<td>绯荤粺鏍稿績鏂囦欢</td>
+<td>系统核心文件</td>
 </tr>
 <tr>
 <td><code>/usr/</code></td>
 <td><code>C:\Windows\System32</code></td>
 <td><code>/usr</code></td>
-<td>绯荤粺宸ュ叿</td>
+<td>系统工具</td>
 </tr>
 <tr>
-<td><code>/bin/</code>銆乣&#x2F;sbin&#x2F;&#96;</td>
+<td><code>/bin/</code>、<code>/sbin/</code></td>
 <td><code>C:\Windows\System32</code></td>
-<td><code>/bin</code>銆乣&#x2F;sbin&#96;</td>
-<td>鍙墽琛屽懡浠?</td>
+<td><code>/bin</code>、<code>/sbin</code></td>
+<td>可执行命令</td>
 </tr>
 <tr>
 <td><code>/lib/</code></td>
 <td><code>C:\Windows\System32</code></td>
 <td><code>/usr/lib</code></td>
-<td>绯荤粺搴?</td>
+<td>系统库</td>
 </tr>
 <tr>
 <td><code>/private/var/</code></td>
 <td><code>C:\ProgramData</code> + <code>C:\Users</code></td>
 <td><code>/var</code> + <code>/Users</code></td>
-<td>杩愯鏃舵暟鎹?+ 鐢ㄦ埛鏁版嵁</td>
+<td>运行时数据 + 用户数据</td>
 </tr>
 <tr>
 <td><code>/private/etc/</code></td>
 <td><code>C:\Windows\System32\drivers\etc</code></td>
 <td><code>/etc</code></td>
-<td>閰嶇疆鏂囦欢</td>
+<td>配置文件</td>
 </tr>
 <tr>
 <td><code>/private/var/mobile/Library/</code></td>
 <td><code>C:\Users\&lt;user&gt;\AppData</code></td>
 <td><code>/Users/&lt;user&gt;/Library</code></td>
-<td>鐢ㄦ埛鏁版嵁</td>
+<td>用户数据</td>
 </tr>
 <tr>
 <td><code>/Applications/</code></td>
 <td><code>C:\Program Files</code></td>
 <td><code>/Applications</code></td>
-<td>搴旂敤瀹夎鐩綍</td>
+<td>应用安装目录</td>
 </tr>
 <tr>
 <td><code>/var/mobile/Media/DCIM/</code></td>
 <td><code>C:\Users\&lt;user&gt;\Pictures</code></td>
 <td><code>/Users/&lt;user&gt;/Pictures</code></td>
-<td>鐓х墖</td>
+<td>照片</td>
 </tr>
 </tbody></table>
 <hr>
-<p><em>鏂囨。鐢熸垚鏃堕棿锛?026-05-28</em></p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2026/05/29/ios%E7%9F%A5%E8%AF%86%E7%82%B9/">http://example.com/2026/05/29/ios%E7%9F%A5%E8%AF%86%E7%82%B9/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/iOS/">iOS</a><a class="post-meta__tags" href="/tags/%E8%B6%8A%E7%8B%B1/">越狱</a><a class="post-meta__tags" href="/tags/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81/">电子取证</a><a class="post-meta__tags" href="/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">文件系统</a></div><div class="post-share"><div class="social-share" data-image="/images/hi.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/04/19/post%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8%E4%B8%8E%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8%E7%9A%84%E5%8C%BA%E5%88%AB/" title="post布尔盲注与时间盲注的区别"><img class="cover" src="/images/hi2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">post布尔盲注与时间盲注的区别</div></div><div class="info-2"><div class="info-item-1">你好呀！我的第一篇WP，但我现在还不知道怎么才能把你美化，等我有时间了我就继续去写这篇博客哈你说好吗？我的jdc大大！ </div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">John Doe</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-%E7%93%92%E5%A9%84%E5%AB%B3%E7%92%81%E6%83%A7%EE%98%AC%E9%90%A2%E9%9D%9B%E7%93%99%E9%8D%99%E6%A0%AC%E7%98%89%E7%80%B9%E5%B1%BD%E5%8F%8F%E9%8E%B8%E5%9B%A7%E5%B4%A1"><span class="toc-number">1.</span> <span class="toc-text">iOS 瓒婄嫳璁惧鐢靛瓙鍙栬瘉瀹屽叏鎸囧崡</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%93%E2%82%AC%E9%8A%86%E4%BD%B9%EE%9B%A7%E6%9D%A9"><span class="toc-number">1.1.</span> <span class="toc-text">涓€銆佹杩?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%8F%88%EE%84%81%E6%9E%83%E5%A6%97i%E6%BD%B0%E9%8D%9A%E6%88%A0%E6%95%B8%E7%80%9B%E6%84%AD%E6%9A%9F%E9%8E%B9%EE%86%BC%E5%BD%87%E7%92%87%E4%BD%B7%E6%B1%89%E9%8D%9B%E6%A9%88%E7%B4%9D%E7%92%87%EF%B8%BE%E7%B2%8F%E7%91%99f%E7%80%BD%E5%AE%B8%E8%8C%B6%E7%A7%BA%E9%90%99%E6%86%8B%E7%B4%99Jailbroken%E9%94%9B%E5%A1%B1OS-%E7%92%81%E6%83%A7%EE%98%AC%E9%90%A8%E5%8B%AC%E6%9E%83%E6%B5%A0%E5%89%81%E9%83%B4%E7%BC%81%E7%86%BA%E7%B2%A8%E9%8F%8B%E5%8B%A9%E2%82%AC%E5%82%9D%E7%A7%BA%E9%90%99%E5%8D%9E%E6%82%97%E7%92%81%E6%83%A7%EE%98%AC%E9%8E%B7%E3%83%A6%E6%B9%81%E7%80%B9%E5%B1%BE%E6%9A%A3%E9%90%A8-root-%E9%8F%89%E5%86%AE%E6%AA%BA%E9%94%9B%E5%B1%BD%E5%BD%B2%E7%92%81%E5%9D%97%E6%A3%B6%E9%8D%98%E7%86%B8%E6%B9%B0%E9%8D%99%E6%A5%85%E6%AA%BA%E9%90%A8%E5%8B%AD%E9%83%B4%E7%BC%81%E7%86%BA%E6%B4%B0%E8%A4%B0%E6%9B%AA%E7%B4%9D%E6%9D%A9%E6%AC%8E%E8%B4%9F%E9%8D%99%E6%A0%AC%E7%98%89%E9%8E%BB%E6%84%AA%E7%B7%B5%E6%B5%9C%E5%97%97%E3%81%87%E9%96%B2%E5%BF%93%E6%B9%AA%E6%B5%BC%E7%8A%B5%E7%B2%BA%E9%97%88%E7%82%B6%E7%A7%BA%E9%90%99%E8%BE%AB%EE%86%95%E6%BE%B6%E5%9B%A6%E7%AC%82%E9%8F%83%E7%8A%B3%E7%A1%B6%E9%91%BE%E5%B3%B0%E5%BD%87%E9%90%A8%E5%8B%AC%E6%9A%9F%E9%8E%B9%EE%86%BA%E2%82%AC"><span class="toc-number">1.2.</span> <span class="toc-text">鏈枃妗ｉ潰鍚戠數瀛愭暟鎹彇璇佷汉鍛橈紝璇︾粏瑙ｆ瀽宸茶秺鐙憋紙Jailbroken锛塱OS 璁惧鐨勬枃浠剁郴缁熺粨鏋勩€傝秺鐙卞悗璁惧鎷ユ湁瀹屾暣鐨?root 鏉冮檺锛屽彲璁块棶鍘熸湰鍙楅檺鐨勭郴缁熺洰褰曪紝杩欎负鍙栬瘉鎻愪緵浜嗗ぇ閲忓湪浼犵粺闈炶秺鐙辫澶囦笂鏃犳硶鑾峰彇鐨勬暟鎹€?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%9C%E5%B1%BB%E2%82%AC%E4%B9%AEOS-%E9%8F%82%E5%9B%A6%E6%AC%A2%E7%BB%AF%E8%8D%A4%E7%B2%BA%E9%8F%8D%E5%9C%AD%E6%B4%B0%E8%A4%B0%E6%9B%9E%E5%8F%8F%E7%91%99"><span class="toc-number">1.3.</span> <span class="toc-text">浜屻€乮OS 鏂囦欢绯荤粺鏍圭洰褰曞叏瑙?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E9%8F%8D%E5%9C%AD%E6%B4%B0%E8%A4%B0%E6%9B%9E%E6%82%87%E9%8F%82%E5%9B%A6%E6%AC%A2%E6%BE%B6%E9%80%9B%E7%B6%94%E9%90%A2%E3%84%A6%E2%82%AC%E6%98%8F%EE%9D%8D"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.1 鏍圭洰褰曞悇鏂囦欢澶逛綔鐢ㄦ€昏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%B6%93%E8%BD%B0%E7%B2%88%E6%B6%94-var-%E9%8D%9C-etc-%E9%8F%83%E3%88%A0%E6%B9%AA%E9%8F%8D%E5%9C%AD%E6%B4%B0%E8%A4%B0%E6%9B%9E%E5%9A%AD%E9%90%9C%E6%9D%BF%E5%BC%B5%E9%8D%A6-private-%E6%B6%93%E5%AC%B6%E7%B4%B5"><span class="toc-number">1.3.2.</span> <span class="toc-text">2.2 涓轰粈涔?var 鍜?etc 鏃㈠湪鏍圭洰褰曞嚭鐜板張鍦?private 涓嬶紵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-var-root-%E9%88%A5-Root-%E9%90%A2%E3%84%A6%E5%9F%9B%E9%90%A9%EE%86%BC%E7%B6%8D%E9%94%9B%E5%A0%A3%E7%A7%BA%E9%90%99%E8%BE%A9%E5%A3%92%E9%8F%88%E5%A4%9B%E7%B4%9A"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.5 &#x2F;var&#x2F;root&#x2F; 鈥?Root 鐢ㄦ埛鐩綍锛堣秺鐙辩壒鏈夛級</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-private-etc-%E9%88%A5-%E7%BB%AF%E8%8D%A4%E7%B2%BA%E9%96%B0%E5%B6%87%E7%96%86%E9%8F%82%E5%9B%A6%E6%AC%A2"><span class="toc-number">1.3.4.</span> <span class="toc-text">3.6 &#x2F;private&#x2F;etc&#x2F; 鈥?绯荤粺閰嶇疆鏂囦欢</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-System-%E9%88%A5-iOS-%E7%BB%AF%E8%8D%A4%E7%B2%BA%E9%8F%82%E5%9B%A6%E6%AC%A2"><span class="toc-number">1.3.5.</span> <span class="toc-text">3.7 &#x2F;System&#x2F; 鈥?iOS 绯荤粺鏂囦欢</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8-Applications-%E9%88%A5-%E7%93%92%E5%A9%84%E5%AB%B3%E6%90%B4%E6%97%82%E6%95%A4%E9%90%A9%EE%86%BC%E7%B6%8D"><span class="toc-number">1.3.6.</span> <span class="toc-text">3.8 &#x2F;Applications&#x2F; 鈥?瓒婄嫳搴旂敤鐩綍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-9-Library-MobileSubstrate-%E9%88%A5-%E7%93%92%E5%A9%84%E5%AB%B3%E5%A6%97%E5%97%98%E7%81%A6"><span class="toc-number">1.3.7.</span> <span class="toc-text">3.9 &#x2F;Library&#x2F;MobileSubstrate&#x2F; 鈥?瓒婄嫳妗嗘灦</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%8D%A5%E6%B6%96%E2%82%AC%E4%BE%80%E7%8F%AE%E6%B5%A0%E5%B3%B0%E2%82%AC%E7%85%8E%E5%BD%87%E7%92%87%E4%BD%BA%E6%B4%B0%E8%A4%B0%E6%9B%AA%E7%B4%99%E9%8E%B8%E5%A4%89%E7%B4%AD%E9%8D%8F%E5%A0%A2%E9%AA%87%E9%8E%BA%E6%8E%91%E7%B0%AD%E9%94%9B"><span class="toc-number">1.4.</span> <span class="toc-text">鍥涖€侀珮浠峰€煎彇璇佺洰褰曪紙鎸変紭鍏堢骇鎺掑簭锛?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%97%EE%83%BF%E7%AB%B4%E5%A7%8A%EE%88%9E%E6%A7%A6-%E9%88%BD%E5%91%AA%E6%A7%84%E9%88%BD%E5%91%AA%E6%A7%84%E9%88%BD%E5%92%83%E7%B4%99%E9%8F%88%E2%82%AC%E6%A5%82%E6%A8%B9%E7%B4%AD%E9%8D%8F%E5%A0%A2%E9%AA%87%E9%94%9B"><span class="toc-number">1.4.1.</span> <span class="toc-text">绗竴姊槦 鈽呪槄鈽呪槄鈽咃紙鏈€楂樹紭鍏堢骇锛?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-%E9%96%AB%E6%B0%B3%EE%86%86%E7%92%81%E6%9D%BF%E7%B6%8D"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">4.1 閫氳璁板綍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-%E5%A8%B4%E5%BF%9A%EE%9D%8D%E9%8D%A3%E3%84%A5%E5%B7%BB%E9%8D%99%E8%8C%B6%EE%86%87%E8%A4%B0"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">4.2 娴忚鍣ㄥ巻鍙茶褰?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-%E9%96%AB%E6%B0%B3%EE%86%86%E8%A4%B0%E6%9B%9A%E7%AC%8C%E9%8F%83%E3%83%A5%E5%B7%BB"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">4.3 閫氳褰曚笌鏃ュ巻</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-%E9%90%93%D1%85%E5%A2%96%E6%B6%93%E5%BA%A4%EE%9D%8B%E6%A3%B0"><span class="toc-number">1.4.1.4.</span> <span class="toc-text">4.4 鐓х墖涓庤棰?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-%E7%80%B5%E5%97%9B%E6%8C%9C%E9%96%BE"><span class="toc-number">1.4.1.5.</span> <span class="toc-text">4.5 瀵嗛挜閾?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-%E7%93%92%E5%A9%84%E5%AB%B3%E9%90%97%E8%A7%84%E6%B9%81-%E9%88%A5-%E9%8D%9B%E6%88%92%E6%8A%A4%E9%8D%98%E5%97%97%E5%BD%B6"><span class="toc-number">1.4.1.6.</span> <span class="toc-text">4.6 瓒婄嫳鐗规湁 鈥?鍛戒护鍘嗗彶</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%97%EE%83%BF%E7%B0%A9%E5%A7%8A%EE%88%9E%E6%A7%A6-%E9%88%BD%E5%91%AA%E6%A7%84%E9%88%BD%E5%91%AA%E6%A7%84%E9%88%BD%E5%97%AD%E7%B4%99%E6%A5%82%E6%A8%B9%E7%B4%AD%E9%8D%8F%E5%A0%A2%E9%AA%87%E9%94%9B"><span class="toc-number">1.4.2.</span> <span class="toc-text">绗簩姊槦 鈽呪槄鈽呪槄鈽嗭紙楂樹紭鍏堢骇锛?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-7-App-%E5%A8%8C%E6%AC%91%E6%B4%85%E9%8F%81%E7%89%88%E5%B5%81"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">4.7 App 娌欑洅鏁版嵁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-8-%E7%BB%AF%E8%8D%A4%E7%B2%BA%E9%8F%83%E3%83%A5%E7%B9%94"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">4.8 绯荤粺鏃ュ織</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-9-Wi-Fi-%E6%B6%93%E5%BA%A3%E7%B6%89%E7%BC%81"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">4.9 Wi-Fi 涓庣綉缁?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-10-%E6%B5%A3%E5%B6%87%E7%96%86%E6%B6%93%E5%BA%A4%E7%B9%8D%E9%8D%94"><span class="toc-number">1.4.2.4.</span> <span class="toc-text">4.10 浣嶇疆涓庤繍鍔?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-11-%E9%8D%8F%E6%9C%B5%E7%B2%AC%E6%A5%82%E6%A8%B9%E7%8E%AF%E9%8D%8A%E5%85%BC%E6%9A%9F%E9%8E%B9"><span class="toc-number">1.4.2.5.</span> <span class="toc-text">4.11 鍏朵粬楂樹环鍊兼暟鎹?</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%97%EE%83%BF%E7%AC%81%E5%A7%8A%EE%88%9E%E6%A7%A6-%E9%88%BD%E5%91%AA%E6%A7%84%E9%88%BD%E5%91%AA%E6%A7%85%E9%88%BD%E5%97%AD%E7%B4%99%E6%B6%93%EE%85%9D%E7%B4%AD%E9%8D%8F%E5%A0%A2%E9%AA%87%E9%94%9B"><span class="toc-number">1.4.3.</span> <span class="toc-text">绗笁姊槦 鈽呪槄鈽呪槅鈽嗭紙涓紭鍏堢骇锛?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-12-%E7%93%92%E5%A9%84%E5%AB%B3%E6%B7%87%E2%84%83%E4%BC%85"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">4.12 瓒婄嫳淇℃伅</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-13-%E7%BB%AF%E8%8D%A4%E7%B2%BA%E9%8D%8B%E5%BF%93%E3%82%BD%E7%92%81%E5%89%A7%E7%96%86"><span class="toc-number">1.4.3.2.</span> <span class="toc-text">4.13 绯荤粺鍋忓ソ璁剧疆</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-14-%E7%BB%AF%E8%8D%A4%E7%B2%BA%E7%BB%BE%D1%87%E5%8E%A4%E7%BC%83"><span class="toc-number">1.4.3.3.</span> <span class="toc-text">4.14 绯荤粺绾ч厤缃?</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%97%EE%84%80%E6%B4%93%E5%A7%8A%EE%88%9E%E6%A7%A6-%E9%88%BD%E5%91%AA%E6%A7%84%E9%88%BD%E5%97%8F%E6%A7%85%E9%88%BD%E5%97%AD%E7%B4%99%E6%B5%A3%E5%BA%9D%E7%B4%AD%E9%8D%8F%E5%A0%A2%E9%AA%87%E9%94%9B"><span class="toc-number">1.4.4.</span> <span class="toc-text">绗洓姊槦 鈽呪槄鈽嗏槅鈽嗭紙浣庝紭鍏堢骇锛?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%9C%E6%96%BB%E2%82%AC%E4%BD%B8%E7%88%B6%E7%91%99-App-%E9%8F%81%E7%89%88%E5%B5%81%E7%92%BA%EE%88%9A%E7%B7%9E%E9%96%AB%E7%86%B8%E7%85%A1"><span class="toc-number">1.5.</span> <span class="toc-text">浜斻€佸父瑙?App 鏁版嵁璺緞閫熸煡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%8D%8F%EE%85%9C%E2%82%AC%E4%BD%B8%E5%BD%87%E7%92%87%E4%BD%B8%E5%9E%8E%E9%8F%8B%E6%84%AC%E4%BC%90%E9%8D%8F%E9%94%8B%E5%B8%B9%E9%91%BD"><span class="toc-number">1.6.</span> <span class="toc-text">鍏€佸彇璇佸垎鏋愬伐鍏锋帹鑽?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E9%8F%81%E7%89%88%E5%B5%81%E6%90%B4%E6%92%B3%E5%9E%8E%E9%8F%8B"><span class="toc-number">1.6.1.</span> <span class="toc-text">6.1 鏁版嵁搴撳垎鏋?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E9%8F%82%E5%9B%A6%E6%AC%A2%E7%BB%AF%E8%8D%A4%E7%B2%BA%E9%8D%92%E5%97%98%E7%80%BD"><span class="toc-number">1.6.2.</span> <span class="toc-text">6.2 鏂囦欢绯荤粺鍒嗘瀽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E9%8F%81%E7%89%88%E5%B5%81%E9%8E%AD%E3%88%A0%EE%98%B2"><span class="toc-number">1.6.3.</span> <span class="toc-text">6.3 鏁版嵁鎭㈠</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%93%E5%86%A6%E2%82%AC%E4%BD%B8%E5%BD%87%E7%92%87%E4%BD%B9%E6%95%9E%E9%8E%B0%E5%BF%8E%E7%B0%A8%E6%A4%A4"><span class="toc-number">1.7.</span> <span class="toc-text">涓冦€佸彇璇佹敞鎰忎簨椤?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E7%93%92%E5%A9%84%E5%AB%B3%E9%8D%92%E3%82%85%E7%95%BE%E6%B8%9A%E6%BF%87%E5%B5%81"><span class="toc-number">1.7.1.</span> <span class="toc-text">7.1 瓒婄嫳鍒ゅ畾渚濇嵁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E9%8F%83%E5%A0%95%E6%A3%BF%E7%BB%BE%E5%9E%AE%E5%9E%8E%E9%8F%8B"><span class="toc-number">1.7.2.</span> <span class="toc-text">7.2 鏃堕棿绾垮垎鏋?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-%E9%8F%81%E7%89%88%E5%B5%81%E6%B7%87%E6%BF%87%E5%A7%A2%E6%B6%93%E5%BA%A1%E7%95%AC%E9%8F%81%E5%AD%98%E2%82%AC"><span class="toc-number">1.7.3.</span> <span class="toc-text">7.3 鏁版嵁淇濇姢涓庡畬鏁存€?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-%E9%8D%94%E7%8A%B2%E7%98%91%E9%8F%81%E7%89%88%E5%B5%81"><span class="toc-number">1.7.4.</span> <span class="toc-text">7.4 鍔犲瘑鏁版嵁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-5-%E7%94%AF%E6%AD%8C%EE%9D%86%E9%8F%81%E7%89%88%E5%B5%81%E9%8D%92%E7%8A%BB%E6%AB%8E%E6%B6%93%E5%BA%A2%E4%BB%AE%E6%BE%B6"><span class="toc-number">1.7.5.</span> <span class="toc-text">7.5 甯歌鏁版嵁鍒犻櫎涓庢仮澶?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-%E9%8F%82%E5%9B%A6%E6%AC%A2%E9%8F%89%E5%86%AE%E6%AA%BA%E6%B6%93%E5%BA%A2%E5%A2%8D%E9%8F%88%E5%A4%8E%E2%82%AC"><span class="toc-number">1.7.6.</span> <span class="toc-text">7.6 鏂囦欢鏉冮檺涓庢墍鏈夎€?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%8D%8F%EE%82%A0%E2%82%AC%E4%BD%B8%E5%BD%87%E7%92%87%E4%BD%B9%E7%A5%A6%E7%BB%8B%E5%AC%AA%E7%BC%93%E7%92%81"><span class="toc-number">1.8.</span> <span class="toc-text">鍏€佸彇璇佹祦绋嬪缓璁?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%94%E6%BF%84%E2%82%AC%E4%BE%80%E6%AA%AE%E8%A4%B0%E6%9B%AA%E7%B4%B0%E9%8D%8F%E6%8A%BD%E6%95%AD%E9%8F%82%E5%9B%A6%E6%AC%A2%E9%96%AB%E7%86%B8%E7%85%A1%E7%90%9B"><span class="toc-number">1.9.</span> <span class="toc-text">涔濄€侀檮褰曪細鍏抽敭鏂囦欢閫熸煡琛?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%8D%97%E4%BD%B5%E2%82%AC%E4%B9%AEOS-%E9%90%A9%EE%86%BC%E7%B6%8D%E6%B6%93-Windows-%E7%80%B5%E7%91%B0%E7%B0%B2%E9%8D%8F%E5%B4%87%E9%83%B4%E9%94%9B%E5%A0%9D%E5%BA%9C%E9%8D%94%E2%95%83%E6%82%8A%E7%91%99o%E7%B4%9A"><span class="toc-number">1.10.</span> <span class="toc-text">鍗併€乮OS 鐩綍涓?Windows 瀵瑰簲鍏崇郴锛堝府鍔╃悊瑙ｏ級</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/05/29/ios%E7%9F%A5%E8%AF%86%E7%82%B9/" title="iOS 越狱设备电子取证完全指南"><img src="/images/hi.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="iOS 越狱设备电子取证完全指南"/></a><div class="content"><a class="title" href="/2026/05/29/ios%E7%9F%A5%E8%AF%86%E7%82%B9/" title="iOS 越狱设备电子取证完全指南">iOS 越狱设备电子取证完全指南</a><time datetime="2026-05-28T16:00:00.000Z" title="Created 2026-05-29 00:00:00">2026-05-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/19/post%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8%E4%B8%8E%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8%E7%9A%84%E5%8C%BA%E5%88%AB/" title="post布尔盲注与时间盲注的区别"><img src="/images/hi2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="post布尔盲注与时间盲注的区别"/></a><div class="content"><a class="title" href="/2026/04/19/post%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8%E4%B8%8E%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8%E7%9A%84%E5%8C%BA%E5%88%AB/" title="post布尔盲注与时间盲注的区别">post布尔盲注与时间盲注的区别</a><time datetime="2026-04-19T13:41:41.000Z" title="Created 2026-04-19 21:41:41">2026-04-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/19/hello-world/" title="Hello World"><img src="/images/hi3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2026/04/19/hello-world/" title="Hello World">Hello World</a><time datetime="2026-04-19T03:38:57.067Z" title="Created 2026-04-19 11:38:57">2026-04-19</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By John Doe</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly-extsrc@latest/dist/snow.min.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+<p><em>文档生成时间：2026-05-28</em></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2026/05/29/ios%E7%9F%A5%E8%AF%86%E7%82%B9/">http://example.com/2026/05/29/ios%E7%9F%A5%E8%AF%86%E7%82%B9/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/iOS/">iOS</a><a class="post-meta__tags" href="/tags/%E8%B6%8A%E7%8B%B1/">越狱</a><a class="post-meta__tags" href="/tags/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81/">电子取证</a><a class="post-meta__tags" href="/tags/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">文件系统</a></div><div class="post-share"><div class="social-share" data-image="/images/hi.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/04/19/post%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8%E4%B8%8E%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8%E7%9A%84%E5%8C%BA%E5%88%AB/" title="post布尔盲注与时间盲注的区别"><img class="cover" src="/images/hi3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">post布尔盲注与时间盲注的区别</div></div><div class="info-2"><div class="info-item-1">你好呀！我的第一篇WP，但我现在还不知道怎么才能把你美化，等我有时间了我就继续去写这篇博客哈你说好吗？我的jdc大大！ </div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">John Doe</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-%E8%B6%8A%E7%8B%B1%E8%AE%BE%E5%A4%87%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97"><span class="toc-number">1.</span> <span class="toc-text">iOS 越狱设备电子取证完全指南</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">一、概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81iOS-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%85%A8%E8%A7%A3"><span class="toc-number">1.2.</span> <span class="toc-text">二、iOS 文件系统根目录全解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%90%84%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BD%9C%E7%94%A8%E6%80%BB%E8%A7%88"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 根目录各文件夹作用总览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E4%B8%BA%E4%BB%80%E4%B9%88-var-%E5%92%8C-etc-%E6%97%A2%E5%9C%A8%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%87%BA%E7%8E%B0%E5%8F%88%E5%9C%A8-private-%E4%B8%8B%EF%BC%9F"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 为什么 var 和 etc 既在根目录出现又在 private 下？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-private-%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 &#x2F;private&#x2F; 目录详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-Library-%EF%BC%88%E7%B3%BB%E7%BB%9F%E7%BA%A7-Library%EF%BC%89%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4 &#x2F;Library&#x2F;（系统级 Library）详解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%90%84%E6%A0%B8%E5%BF%83%E7%9B%AE%E5%BD%95%E7%9A%84%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.3.</span> <span class="toc-text">三、各核心目录的子文件夹详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-var-mobile-%E2%80%94-%E7%94%A8%E6%88%B7%E4%B8%BB%E7%9B%AE%E5%BD%95%EF%BC%88%E5%8F%96%E8%AF%81%E6%A0%B8%E5%BF%83%EF%BC%81%EF%BC%89"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 &#x2F;var&#x2F;mobile&#x2F; — 用户主目录（取证核心！）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%90%E7%9B%AE%E5%BD%95%E8%AF%B4%E6%98%8E%EF%BC%9A"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">子目录说明：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-var-mobile-Library-%E2%80%94-%E7%94%A8%E6%88%B7-Library%EF%BC%88%E5%8F%96%E8%AF%81%E6%9C%80%E6%A0%B8%E5%BF%83%EF%BC%81%EF%BC%89"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 &#x2F;var&#x2F;mobile&#x2F;Library&#x2F; — 用户 Library（取证最核心！）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-var-mobile-Media-%E2%80%94-%E5%A4%9A%E5%AA%92%E4%BD%93%E6%95%B0%E6%8D%AE"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 &#x2F;var&#x2F;mobile&#x2F;Media&#x2F; — 多媒体数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-var-mobile-Containers-%E2%80%94-App-%E6%B2%99%E7%9B%92"><span class="toc-number">1.3.4.</span> <span class="toc-text">3.4 &#x2F;var&#x2F;mobile&#x2F;Containers&#x2F; — App 沙盒</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-var-root-%E2%80%94-Root-%E7%94%A8%E6%88%B7%E7%9B%AE%E5%BD%95%EF%BC%88%E8%B6%8A%E7%8B%B1%E7%89%B9%E6%9C%89%EF%BC%89"><span class="toc-number">1.3.5.</span> <span class="toc-text">3.5 &#x2F;var&#x2F;root&#x2F; — Root 用户目录（越狱特有）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-private-etc-%E2%80%94-%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.6.</span> <span class="toc-text">3.6 &#x2F;private&#x2F;etc&#x2F; — 系统配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-System-%E2%80%94-iOS-%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.7.</span> <span class="toc-text">3.7 &#x2F;System&#x2F; — iOS 系统文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8-Applications-%E2%80%94-%E8%B6%8A%E7%8B%B1%E5%BA%94%E7%94%A8%E7%9B%AE%E5%BD%95"><span class="toc-number">1.3.8.</span> <span class="toc-text">3.8 &#x2F;Applications&#x2F; — 越狱应用目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-9-Library-MobileSubstrate-%E2%80%94-%E8%B6%8A%E7%8B%B1%E6%A1%86%E6%9E%B6"><span class="toc-number">1.3.9.</span> <span class="toc-text">3.9 &#x2F;Library&#x2F;MobileSubstrate&#x2F; — 越狱框架</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%AB%98%E4%BB%B7%E5%80%BC%E5%8F%96%E8%AF%81%E7%9B%AE%E5%BD%95%EF%BC%88%E6%8C%89%E4%BC%98%E5%85%88%E7%BA%A7%E6%8E%92%E5%BA%8F%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">四、高价值取证目录（按优先级排序）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%A2%AF%E9%98%9F-%E2%98%85%E2%98%85%E2%98%85%E2%98%85%E2%98%85%EF%BC%88%E6%9C%80%E9%AB%98%E4%BC%98%E5%85%88%E7%BA%A7%EF%BC%89"><span class="toc-number">1.4.1.</span> <span class="toc-text">第一梯队 ★★★★★（最高优先级）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-%E9%80%9A%E8%AE%AF%E8%AE%B0%E5%BD%95"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">4.1 通讯记录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">4.2 浏览器历史记录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-%E9%80%9A%E8%AE%AF%E5%BD%95%E4%B8%8E%E6%97%A5%E5%8E%86"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">4.3 通讯录与日历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-%E7%85%A7%E7%89%87%E4%B8%8E%E8%A7%86%E9%A2%91"><span class="toc-number">1.4.1.4.</span> <span class="toc-text">4.4 照片与视频</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-%E5%AF%86%E9%92%A5%E9%93%BE"><span class="toc-number">1.4.1.5.</span> <span class="toc-text">4.5 密钥链</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-%E8%B6%8A%E7%8B%B1%E7%89%B9%E6%9C%89-%E2%80%94-%E5%91%BD%E4%BB%A4%E5%8E%86%E5%8F%B2"><span class="toc-number">1.4.1.6.</span> <span class="toc-text">4.6 越狱特有 — 命令历史</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%A2%AF%E9%98%9F-%E2%98%85%E2%98%85%E2%98%85%E2%98%85%E2%98%86%EF%BC%88%E9%AB%98%E4%BC%98%E5%85%88%E7%BA%A7%EF%BC%89"><span class="toc-number">1.4.2.</span> <span class="toc-text">第二梯队 ★★★★☆（高优先级）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-7-App-%E6%B2%99%E7%9B%92%E6%95%B0%E6%8D%AE"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">4.7 App 沙盒数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-8-%E7%B3%BB%E7%BB%9F%E6%97%A5%E5%BF%97"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">4.8 系统日志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-9-Wi-Fi-%E4%B8%8E%E7%BD%91%E7%BB%9C"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">4.9 Wi-Fi 与网络</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-10-%E4%BD%8D%E7%BD%AE%E4%B8%8E%E8%BF%90%E5%8A%A8"><span class="toc-number">1.4.2.4.</span> <span class="toc-text">4.10 位置与运动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-11-%E5%85%B6%E4%BB%96%E9%AB%98%E4%BB%B7%E5%80%BC%E6%95%B0%E6%8D%AE"><span class="toc-number">1.4.2.5.</span> <span class="toc-text">4.11 其他高价值数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%A2%AF%E9%98%9F-%E2%98%85%E2%98%85%E2%98%85%E2%98%86%E2%98%86%EF%BC%88%E4%B8%AD%E4%BC%98%E5%85%88%E7%BA%A7%EF%BC%89"><span class="toc-number">1.4.3.</span> <span class="toc-text">第三梯队 ★★★☆☆（中优先级）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-12-%E8%B6%8A%E7%8B%B1%E4%BF%A1%E6%81%AF"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">4.12 越狱信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-13-%E7%B3%BB%E7%BB%9F%E5%81%8F%E5%A5%BD%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.4.3.2.</span> <span class="toc-text">4.13 系统偏好设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-14-%E7%B3%BB%E7%BB%9F%E7%BA%A7%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.3.3.</span> <span class="toc-text">4.14 系统级配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%A2%AF%E9%98%9F-%E2%98%85%E2%98%85%E2%98%86%E2%98%86%E2%98%86%EF%BC%88%E4%BD%8E%E4%BC%98%E5%85%88%E7%BA%A7%EF%BC%89"><span class="toc-number">1.4.4.</span> <span class="toc-text">第四梯队 ★★☆☆☆（低优先级）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%B8%B8%E8%A7%81-App-%E6%95%B0%E6%8D%AE%E8%B7%AF%E5%BE%84%E9%80%9F%E6%9F%A5"><span class="toc-number">1.5.</span> <span class="toc-text">五、常见 App 数据路径速查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%8F%96%E8%AF%81%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90"><span class="toc-number">1.6.</span> <span class="toc-text">六、取证分析工具推荐</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E6%9E%90"><span class="toc-number">1.6.1.</span> <span class="toc-text">6.1 数据库分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90"><span class="toc-number">1.6.2.</span> <span class="toc-text">6.2 文件系统分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D"><span class="toc-number">1.6.3.</span> <span class="toc-text">6.3 数据恢复</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E5%8F%96%E8%AF%81%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.7.</span> <span class="toc-text">七、取证注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E8%B6%8A%E7%8B%B1%E5%88%A4%E5%AE%9A%E4%BE%9D%E6%8D%AE"><span class="toc-number">1.7.1.</span> <span class="toc-text">7.1 越狱判定依据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E6%97%B6%E9%97%B4%E7%BA%BF%E5%88%86%E6%9E%90"><span class="toc-number">1.7.2.</span> <span class="toc-text">7.2 时间线分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-%E6%95%B0%E6%8D%AE%E4%BF%9D%E6%8A%A4%E4%B8%8E%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-number">1.7.3.</span> <span class="toc-text">7.3 数据保护与完整性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-%E5%8A%A0%E5%AF%86%E6%95%B0%E6%8D%AE"><span class="toc-number">1.7.4.</span> <span class="toc-text">7.4 加密数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-5-%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E5%88%A0%E9%99%A4%E4%B8%8E%E6%81%A2%E5%A4%8D"><span class="toc-number">1.7.5.</span> <span class="toc-text">7.5 常见数据删除与恢复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-6-%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%B8%8E%E6%89%80%E6%9C%89%E8%80%85"><span class="toc-number">1.7.6.</span> <span class="toc-text">7.6 文件权限与所有者</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E5%8F%96%E8%AF%81%E6%B5%81%E7%A8%8B%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.8.</span> <span class="toc-text">八、取证流程建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E9%99%84%E5%BD%95%EF%BC%9A%E5%85%B3%E9%94%AE%E6%96%87%E4%BB%B6%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="toc-number">1.9.</span> <span class="toc-text">九、附录：关键文件速查表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E3%80%81iOS-%E7%9B%AE%E5%BD%95%E4%B8%8E-Windows-%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB%EF%BC%88%E5%B8%AE%E5%8A%A9%E7%90%86%E8%A7%A3%EF%BC%89"><span class="toc-number">1.10.</span> <span class="toc-text">十、iOS 目录与 Windows 对应关系（帮助理解）</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/05/29/ios%E7%9F%A5%E8%AF%86%E7%82%B9/" title="iOS 越狱设备电子取证完全指南"><img src="/images/hi.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="iOS 越狱设备电子取证完全指南"/></a><div class="content"><a class="title" href="/2026/05/29/ios%E7%9F%A5%E8%AF%86%E7%82%B9/" title="iOS 越狱设备电子取证完全指南">iOS 越狱设备电子取证完全指南</a><time datetime="2026-05-28T16:00:00.000Z" title="Created 2026-05-29 00:00:00">2026-05-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/19/post%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8%E4%B8%8E%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8%E7%9A%84%E5%8C%BA%E5%88%AB/" title="post布尔盲注与时间盲注的区别"><img src="/images/hi3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="post布尔盲注与时间盲注的区别"/></a><div class="content"><a class="title" href="/2026/04/19/post%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8%E4%B8%8E%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8%E7%9A%84%E5%8C%BA%E5%88%AB/" title="post布尔盲注与时间盲注的区别">post布尔盲注与时间盲注的区别</a><time datetime="2026-04-19T13:41:41.000Z" title="Created 2026-04-19 21:41:41">2026-04-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/19/hello-world/" title="Hello World"><img src="/images/hi2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2026/04/19/hello-world/" title="Hello World">Hello World</a><time datetime="2026-04-19T03:38:57.067Z" title="Created 2026-04-19 11:38:57">2026-04-19</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By John Doe</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly-extsrc@latest/dist/snow.min.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
 POWERMODE.shake = true;
 POWERMODE.mobile = true;
 document.body.addEventListener('input', POWERMODE);
