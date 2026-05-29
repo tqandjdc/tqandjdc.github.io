@@ -2,7 +2,7 @@
 
 /* --- 全局全屏背景图 --- */
 html, body {
-  background: url('/images/bg/5.png') center/cover no-repeat fixed !important;
+  background: var(--random-bg, url('/images/bg/5.png')) center/cover no-repeat fixed !important;
   background-attachment: fixed !important;
 }
 
